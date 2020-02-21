@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    //between 0 and -180 (degrees), char starts at -90
-    //make it a child of empty gameobject in the spline, put the child a little below the parent, then rotate the parent to rotate the child
 
     float speed = 2;
     float count = 0f;
@@ -44,12 +42,13 @@ public class Move : MonoBehaviour
     protected void Start()
     {
         AttachGyro();
-        spline = GameObject.Find("Smoothed");
+        spline = GameObject.Find("Smoothed"); //the spline
     }
 
     protected void Update()
     {
-        splineLocaton = (spline.GetComponent<SplineMesh.Spline>().GetSample(count)).location;
+        //move along the spline
+        splineLocaton = (spline.GetComponent<SplineMesh.Spline>().GetSample(count)).location; 
         transform.position = splineLocaton;
 
 
@@ -57,6 +56,7 @@ public class Move : MonoBehaviour
             return;
         transform.rotation = Quaternion.Slerp(transform.rotation,
             cameraBase * (ConvertRotation(referanceRotation * Input.gyro.attitude) * GetRotFix()), lowPassFilterFactor);
+        //Professor Baker's code
 #if UNITY_EDITOR
         MoveChar(Input.GetAxis(k_HORIZONTAL), Input.GetAxis(k_VERTICAL));
 #else
@@ -66,80 +66,16 @@ public class Move : MonoBehaviour
         count += .01f;
     }
 
-
+    //Professor Baker's Code, modified for 3D and changes x and z (eventually will only change x)
     void MoveChar(float x, float z)
     {
         Vector3 newPos = transform.position;
         newPos.x += x * speed;
         newPos.z += z * speed;
-        /*
-    if (newPos.x < -boardSize.x)
-        newPos.x = -boardSize.x;
-    else if (newPos.x > boardSize.x)
-        newPos.x = boardSize.x;
-
-    if (newPos.y < -boardSize.y)
-        newPos.y = -boardSize.y;
-    else if (newPos.y > boardSize.y)
-        newPos.y = boardSize.y;*/
 
         transform.position = newPos;
     }
 
-    /*protected void OnGUI()
-    {
-        if (!debug)
-            return;
-
-        GUILayout.Label("Orientation: " + Screen.orientation);
-        GUILayout.Label("Calibration: " + calibration);
-        GUILayout.Label("Camera base: " + cameraBase);
-        GUILayout.Label("input.gyro.attitude: " + Input.gyro.attitude);
-        GUILayout.Label("transform.rotation: " + transform.rotation);
-
-        if (GUILayout.Button("On/off gyro: " + Input.gyro.enabled, GUILayout.Height(100)))
-        {
-            Input.gyro.enabled = !Input.gyro.enabled;
-        }
-
-        if (GUILayout.Button("On/off gyro controller: " + gyroEnabled, GUILayout.Height(100)))
-        {
-            if (gyroEnabled)
-            {
-                DetachGyro();
-            }
-            else
-            {
-                AttachGyro();
-            }
-        }
-
-        if (GUILayout.Button("Update gyro calibration (Horizontal only)", GUILayout.Height(80)))
-        {
-            UpdateCalibration(true);
-        }
-
-
-        if (GUILayout.Button("Reset base orientation", GUILayout.Height(80)))
-        {
-            ResetBaseOrientation();
-        }
-
-        if (GUILayout.Button("Reset camera rotation", GUILayout.Height(80)))
-        {
-            transform.rotation = Quaternion.identity;
-        }
-
-        if (GUILayout.Button("Update camera base rotation (Horizontal only)", GUILayout.Height(80)))
-        {
-            UpdateCameraBaseRotation(true);
-        }
-
-        if (GUILayout.Button("Close", GUILayout.Height(80)))
-        {
-            debug = false;
-        }
-    }*/
 
     #endregion
 
