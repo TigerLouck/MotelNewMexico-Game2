@@ -11,7 +11,10 @@ public class Move : MonoBehaviour
     float speed = 2;
     float count = 0f;
     private GameObject spline;
+    public GameObject posObj;
+    public GameObject rotObj;
     Vector3 splineLocaton;
+    Quaternion splineRotation;
     const string k_HORIZONTAL = "Horizontal";
     const string k_VERTICAL = "Vertical";
 
@@ -48,13 +51,15 @@ public class Move : MonoBehaviour
     protected void Update()
     {
         //move along the spline
-        splineLocaton = (spline.GetComponent<SplineMesh.Spline>().GetSample(count)).location; 
-        transform.position = splineLocaton;
+        splineLocaton = (spline.GetComponent<SplineMesh.Spline>().GetSample(count)).location; //location tracked 2 parents up
+        splineRotation = (spline.GetComponent<SplineMesh.Spline>().GetSample(count)).Rotation; //rotation tracked 1 parent up, camera being in same level but above
+        posObj.transform.position = splineLocaton;
+        rotObj.transform.rotation = splineRotation;
 
 
         if (!gyroEnabled)
             return;
-        transform.rotation = Quaternion.Slerp(transform.rotation,
+        rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
             cameraBase * (ConvertRotation(referanceRotation * Input.gyro.attitude) * GetRotFix()), lowPassFilterFactor);
         //Professor Baker's code
 #if UNITY_EDITOR
@@ -69,11 +74,11 @@ public class Move : MonoBehaviour
     //Professor Baker's Code, modified for 3D and changes x and z (eventually will only change x)
     void MoveChar(float x, float z)
     {
-        Vector3 newPos = transform.position;
+        Vector3 newPos = posObj.transform.position;
         newPos.x += x * speed;
         newPos.z += z * speed;
 
-        transform.position = newPos;
+        posObj.transform.position = newPos;
     }
 
 
