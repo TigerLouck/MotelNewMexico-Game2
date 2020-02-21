@@ -29,7 +29,7 @@ namespace SplineMesh {
             if (e.type == EventType.MouseDown) {
                 Undo.RegisterCompleteObjectUndo(se, "change extruded shape");
                 // if control key pressed, we will have to create a new vertex if position is changed
-                if (e.alt) {
+                if (e.control) {
                     mustCreateNewNode = true;
                 }
             }
