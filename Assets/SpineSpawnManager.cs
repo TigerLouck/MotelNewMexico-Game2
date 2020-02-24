@@ -35,17 +35,18 @@ public class SpineSpawnManager : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        // /UpdateTimer();
+        UpdateTimer();
     }
 
     private void SpawnRandomSpline ()
     {
-        if (transform.childCount <= 0)
+        if (spawnedSplines.Count <= 0)
         {
             // if not other splines to base position off of, start at origin
             GameObject temp = Instantiate (splinePrefabs[GetRandomSpine ()]);
-            temp.transform.parent = splineParent.transform;
+            //temp.transform.parent = splineParent.transform;
             spawnedSplines.Add (temp);
+            Debug.Log("Here");
         }
         else
         {
@@ -53,13 +54,27 @@ public class SpineSpawnManager : MonoBehaviour
             Vector3 lastDirection = GetEndDirection (spawnedSplines[spawnedSplines.Count - 1]);
             GameObject temp = Instantiate (splinePrefabs[GetRandomSpine ()]);
 
-            Transform currentTransform = spawnedSplines[spawnedSplines.Count - 1].transform;
-            Vector3 newPos = currentTransform.TransformPoint (lastPosition);
-            temp.transform.position = newPos;
+            
 
+            Transform currentTransform = spawnedSplines[spawnedSplines.Count - 1].transform.GetChild(0);
+            Transform tempG = currentTransform.GetChild(0);
+
+            // parenting of splines makes this not work properly
+            Vector3 newPos = spawnedSplines[spawnedSplines.Count - 1].transform.GetChild(0).transform.TransformPoint(lastPosition);
+
+            //newPos*=5f;
+            
             Vector3 diff = currentTransform.TransformPoint (lastDirection);
+            //diff*=5.019f;
             Vector3 newDir = (diff - newPos).normalized;
+
+            //Debug.Log(newPos);
+
+            temp.transform.position = newPos;
             temp.transform.Rotate(newDir);
+            spawnedSplines.Add (temp);
+
+            
         }
 
     }
@@ -70,6 +85,7 @@ public class SpineSpawnManager : MonoBehaviour
         if (currentTime >= spawnTimer)
         {
             SpawnRandomSpline ();
+            currentTime=0f;
         }
     }
 

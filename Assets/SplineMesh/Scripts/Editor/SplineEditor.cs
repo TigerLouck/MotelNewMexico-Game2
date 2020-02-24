@@ -99,6 +99,7 @@ namespace SplineMesh {
                 case SelectionType.Node:
                     // place a handle on the node and manage position change
                     Vector3 newPosition = spline.transform.InverseTransformPoint(Handles.PositionHandle(spline.transform.TransformPoint(selection.Position), Quaternion.identity));
+                    //Debug.Log("Name: "+spline.transform.name+" World Pos: "+spline.transform.TransformPoint(selection.Position)+"   "+newPosition);
                     if (newPosition != selection.Position) {
                         // position handle has been moved
                         if (mustCreateNewNode) {
@@ -266,6 +267,7 @@ namespace SplineMesh {
                 var positionProp = nodeProperty.FindPropertyRelative("position");
                 EditorGUILayout.PropertyField(positionProp, new GUIContent("Position"));
                 if (check.changed) {
+                    Debug.Log("Position: "+node.Position+"Changed: "+positionProp.vector3Value);
                     node.Position = positionProp.vector3Value;
                 }
             }
@@ -274,7 +276,9 @@ namespace SplineMesh {
                 var directionProp = nodeProperty.FindPropertyRelative("direction");
                 EditorGUILayout.PropertyField(directionProp, new GUIContent("Direction"));
                 if (check.changed) {
-                    node.Direction = directionProp.vector3Value;
+
+                    node.Direction = new Vector3(directionProp.vector3Value.x,directionProp.vector3Value.y,directionProp.vector3Value.z);
+                    Debug.Log(node.Direction);
                 }
             }
 

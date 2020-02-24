@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4426887777065576219}
   m_Layer: 0
-  m_Name: Halfpipe
+  m_Name: Halfpipe_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4426887777496820326}
   m_Layer: 0
   m_Name: Extruder
-  m_TagString: Untagged
+  m_TagString: Extruder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

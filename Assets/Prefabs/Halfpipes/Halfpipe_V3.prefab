@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3474079039660334417}
   m_Layer: 0
   m_Name: Extruder
-  m_TagString: Untagged
+  m_TagString: Extruder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
