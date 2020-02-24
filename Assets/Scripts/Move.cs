@@ -54,31 +54,31 @@ public class Move : MonoBehaviour
         splineLocaton = (spline.GetComponent<SplineMesh.Spline>().GetSample(count)).location; //location tracked 2 parents up
         splineRotation = (spline.GetComponent<SplineMesh.Spline>().GetSample(count)).Rotation; //rotation tracked 1 parent up, camera being in same level but above
         posObj.transform.position = splineLocaton;
-        rotObj.transform.rotation = splineRotation;
+        posObj.transform.rotation = splineRotation;
 
 
         if (!gyroEnabled)
             return;
-        rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
+        posObj.transform.rotation = Quaternion.Slerp(transform.rotation,
             cameraBase * (ConvertRotation(referanceRotation * Input.gyro.attitude) * GetRotFix()), lowPassFilterFactor);
         //Professor Baker's code
 #if UNITY_EDITOR
-        MoveChar(Input.GetAxis(k_HORIZONTAL), Input.GetAxis(k_VERTICAL));
+        MoveChar(Input.GetAxis(k_VERTICAL));
 #else
-                MoveChar(Input.acceleration.x, Input.acceleration.y);
+                MoveChar(Input.acceleration.x);
 #endif
 
         count += .01f;
     }
 
     //Professor Baker's Code, modified for 3D and changes x and z (eventually will only change x)
-    void MoveChar(float x, float z)
+    void MoveChar(float z)
     {
         Vector3 newPos = posObj.transform.position;
-        newPos.x += x * speed;
         newPos.z += z * speed;
 
         posObj.transform.position = newPos;
+        posObj.transform.rotation = rotObj.transform.rotation;
     }
 
 
