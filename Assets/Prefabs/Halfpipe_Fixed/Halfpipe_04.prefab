@@ -202,7 +202,7 @@ MonoBehaviour:
   - point: {x: -7, y: 0}
     normal: {x: -1, y: -1}
     uCoord: 0.04
-  material: {fileID: 2100000, guid: 863715256888b184fb566639a2b188cc, type: 2}
+  material: {fileID: 2100000, guid: d5ffcdc202a52254b83bf619f8d87163, type: 2}
   textureScale: 0.05
   sampleSpacing: 1
 --- !u!1 &7950391494599226067
