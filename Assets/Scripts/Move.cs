@@ -57,28 +57,33 @@ public class Move : MonoBehaviour
         posObj.transform.rotation = splineRotation;
 
 
-        if (!gyroEnabled)
-            return;
-        posObj.transform.rotation = Quaternion.Slerp(transform.rotation,
-            cameraBase * (ConvertRotation(referanceRotation * Input.gyro.attitude) * GetRotFix()), lowPassFilterFactor);
+
+        rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
+            splineRotation * (ConvertRotation(Input.gyro.attitude)), lowPassFilterFactor);
         //Professor Baker's code
 #if UNITY_EDITOR
-        MoveChar(Input.GetAxis(k_VERTICAL));
+        //MoveChar(Input.GetAxis(k_HORIZONTAL),Input.GetAxis(k_VERTICAL));
+        rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
+            splineRotation * Quaternion.Euler(0,0, Input.GetAxis(k_HORIZONTAL)*90), lowPassFilterFactor);
 #else
-                MoveChar(Input.acceleration.x);
+         rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
+            splineRotation * Quaternion.Euler(0,0, Input.acceleration.x*90), lowPassFilterFactor);
 #endif
 
-        count += .01f;
+        count = (count + .01f) % 6;
     }
 
-    //Professor Baker's Code, modified for 3D and changes x and z (eventually will only change x)
-    void MoveChar(float z)
+    //Professor Baker's Code, modified for 3D and changes z
+    void MoveChar(float x,float z)
     {
-        Vector3 newPos = posObj.transform.position;
+
+        Vector3 newPos = posObj.transform.localPosition;
+        newPos.x += x * speed;
         newPos.z += z * speed;
 
-        posObj.transform.position = newPos;
-        posObj.transform.rotation = rotObj.transform.rotation;
+        posObj.transform.localPosition = newPos;
+        
+        
     }
 
 
@@ -157,7 +162,7 @@ public class Move : MonoBehaviour
         }
         else
         {
-            cameraBase = transform.rotation;
+            cameraBase = rotObj.transform.rotation;
         }
     }
 
