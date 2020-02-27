@@ -410,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859248528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 222.78146, y: 68.76834, z: 102.29162}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -460,13 +460,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splinePrefabs:
-  - {fileID: 4864847397155280317, guid: e91fcc3597485f54ba03e354554a79af, type: 3}
-  - {fileID: 2286358400987416102, guid: 88d6d42823d44e245b8913b490f8c260, type: 3}
-  - {fileID: 3318943616790147399, guid: 0a6f15d8ee8537740be51aa0f3777016, type: 3}
-  - {fileID: 3474079039820517421, guid: 953a2b72c03d01043bce0a5c6f119360, type: 3}
-  - {fileID: 1372219173852317847, guid: d6ab225e76037ba47835e4995b9b43b5, type: 3}
+  - {fileID: 1604289143313336596, guid: e4dadd3210652ee47a2031bb6f17087c, type: 3}
+  - {fileID: 4949816866348581223, guid: 35251257306302b4aa1f5d7104143e11, type: 3}
+  - {fileID: 4900271475987692209, guid: 1ce48745c8018d44fbe2509bc4e7d3e2, type: 3}
+  - {fileID: 966520604750236320, guid: efa86e625e9005d48b1d72fc41bd3c49, type: 3}
+  - {fileID: 7950391494599226067, guid: d2f66ed5a3341874cb0666a334a66214, type: 3}
+  - {fileID: 4721492683064592412, guid: 66e50043d0238a4488f2b6d9193ddfb1, type: 3}
   splineParent: {fileID: 1859248528}
-  spawnTimer: 2
+  spawnTimer: 5
 --- !u!1001 &5093108392072081837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -514,25 +515,15 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 24197826601838232, guid: de23bc26820fb3b4fa41e79c02911dc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 24197826601838232, guid: de23bc26820fb3b4fa41e79c02911dc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 24197826601838232, guid: de23bc26820fb3b4fa41e79c02911dc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3895242126050890891, guid: de23bc26820fb3b4fa41e79c02911dc8,
         type: 3}
       propertyPath: m_Name
       value: Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895242126050890891, guid: de23bc26820fb3b4fa41e79c02911dc8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de23bc26820fb3b4fa41e79c02911dc8, type: 3}
@@ -547,6 +538,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 195372694897777611, guid: 32b02f02e2c8c3041be3903936429ac6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3813778911127906776, guid: 32b02f02e2c8c3041be3903936429ac6,
         type: 3}
@@ -651,6 +647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StellatedPolyhedronProtagonist
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583534881369734145, guid: 3055a0b751ad57643953d7e2ffe9b629,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3055a0b751ad57643953d7e2ffe9b629, type: 3}

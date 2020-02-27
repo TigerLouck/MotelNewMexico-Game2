@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3474079039660334417}
   m_Layer: 0
   m_Name: Extruder
-  m_TagString: Untagged
+  m_TagString: Extruder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   - point: {x: -1.0958123, y: -0.5213694}
     normal: {x: 0.16776848, y: 0.29858306}
     uCoord: 0.1
-  material: {fileID: 2100000, guid: 863715256888b184fb566639a2b188cc, type: 2}
+  material: {fileID: 2100000, guid: d5ffcdc202a52254b83bf619f8d87163, type: 2}
   textureScale: 0.16
   sampleSpacing: 0.1
 --- !u!1 &3474079039820517421
