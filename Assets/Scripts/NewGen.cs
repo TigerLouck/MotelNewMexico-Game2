@@ -8,7 +8,7 @@ public class NewGen : MonoBehaviour
     private int numNodes;
     private int copiesPerShape;
     private float count = 0f;
-    private Spline spline;
+    public Spline spline;
     public GameObject nodesScript;
     public GameObject item;
     public GameObject obstacle;
@@ -20,7 +20,7 @@ public class NewGen : MonoBehaviour
     {
         copiesPerShape = 5;
         numNodes = nodesScript.GetComponent<Spline>().nodes.Count;
-        spline = GameObject.Find("Smoothed").GetComponent<Spline>(); //the spline
+        //spline = GameObject.Find("Extruder").GetComponent<Spline>(); //the spline
         GenerateObjects();
     }
 
@@ -55,7 +55,7 @@ public class NewGen : MonoBehaviour
     void Ring(Vector3 centerPosNode)
     {
         float angle = 360f / copiesPerShape;
-        float radius = 1.0f;
+        float radius = 5.0f;
         for (int i = 0; i < copiesPerShape; i++)
         {
             Vector3 direction = Quaternion.AngleAxis(i * angle, splineTan) * splineUp;
