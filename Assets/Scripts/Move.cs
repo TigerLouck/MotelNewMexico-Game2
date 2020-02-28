@@ -13,6 +13,7 @@ public class Move : MonoBehaviour
     private List<GameObject> splines;
     public GameObject posObj;
     public GameObject rotObj;
+    public SplineMesh.Spline splineScript;
     Vector3 splineLocation;
     Quaternion splineRotation;
     const string k_HORIZONTAL = "Horizontal";
@@ -48,11 +49,12 @@ public class Move : MonoBehaviour
     }
 
     [System.Obsolete]
-    protected void Update()
+    protected void FixedUpdate()
     {
         splines = GameObject.Find("HalfpipeManager").GetComponent<SpineSpawnManager>().spawnedSplines;
+        splineScript = splines[current].GetComponentInChildren<SplineMesh.Spline>();
         //move along the spline
-        if(count>=splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes.Count-1)
+        if (count>=splineScript.nodes.Count-1)
         {
             if(current<splines.Count)
             {
@@ -64,14 +66,14 @@ public class Move : MonoBehaviour
         if (splines.Count>0)
         {
             //Debug.Log("Current Pos:"+(splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location);
-            splineLocation = (splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location; //location tracked 2 parents up
-            //splineLocation += splines[current].transform.FindChild("Extruder").transform.TransformPoint(splineLocation);
+            Vector3 splineLocationLocal = (splineScript.GetSample(count)).location; //location tracked 2 parents up
+            splineLocation = splines[current].transform.FindChild("Extruder").transform.TransformPoint(splineLocationLocal);
             /*
             for(int i=0;i< splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes.Count-1;i++)
             {
                 splines[current].transform.FindChild("Extruder").transform.TransformPoint(splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes[i].Position);
             }*/
-            splineRotation = (splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).Rotation; //rotation tracked 1 parent up, camera being in same level but above
+            splineRotation = (splineScript.GetSample(count)).Rotation; //rotation tracked 1 parent up, camera being in same level but above
             posObj.transform.position = splineLocation;
             posObj.transform.rotation = splineRotation;
 
