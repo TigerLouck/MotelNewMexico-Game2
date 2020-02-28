@@ -73,8 +73,7 @@ public class Move : MonoBehaviour
                 splines[current].transform.FindChild("Extruder").transform.TransformPoint(splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes[i].Position);
             }*/
             splineRotation = (splineScript.GetSample(count)).Rotation; //rotation tracked 1 parent up, camera being in same level but above
-            Vector3 elevation = splineScript.GetSample(count).up;
-            posObj.transform.position = splineLocation+elevation*2.5f;
+            posObj.transform.position = splineLocation;
             posObj.transform.rotation = splineRotation;
 
             rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
