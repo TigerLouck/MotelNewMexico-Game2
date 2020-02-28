@@ -17,7 +17,7 @@ public class SpineSpawnManager : MonoBehaviour
     private float spawnTimer;
 
     // a list of all the splines that have currently spawned in the scene
-    private List<GameObject> spawnedSplines;
+    public List<GameObject> spawnedSplines;
 
     private float currentTime;
 
@@ -95,7 +95,7 @@ public class SpineSpawnManager : MonoBehaviour
         return rand;
     }
 
-    private Vector3 GetEndPosition (GameObject spline)
+    public Vector3 GetEndPosition (GameObject spline)
     {
         List<SplineNode> nodes = spline.GetComponentInChildren<Spline> ().nodes;
         SplineNode lastNode = nodes[nodes.Count - 1];

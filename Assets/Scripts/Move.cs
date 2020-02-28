@@ -7,13 +7,13 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-
+    int current = 0;
     float speed = 2;
     float count = 0f;
-    private GameObject spline;
+    private List<GameObject> splines;
     public GameObject posObj;
     public GameObject rotObj;
-    Vector3 splineLocaton;
+    Vector3 splineLocation;
     Quaternion splineRotation;
     const string k_HORIZONTAL = "Horizontal";
     const string k_VERTICAL = "Vertical";
@@ -45,32 +45,54 @@ public class Move : MonoBehaviour
     protected void Start()
     {
         AttachGyro();
-        spline = GameObject.Find("Smoothed"); //the spline
     }
 
+    [System.Obsolete]
     protected void Update()
     {
+        splines = GameObject.Find("HalfpipeManager").GetComponent<SpineSpawnManager>().spawnedSplines;
         //move along the spline
-        splineLocaton = (spline.GetComponent<SplineMesh.Spline>().GetSample(count)).location; //location tracked 2 parents up
-        splineRotation = (spline.GetComponent<SplineMesh.Spline>().GetSample(count)).Rotation; //rotation tracked 1 parent up, camera being in same level but above
-        posObj.transform.position = splineLocaton;
-        posObj.transform.rotation = splineRotation;
+        if(count>=splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes.Count-1)
+        {
+            if(current<splines.Count)
+            {
+                count = 0;
+                current++;
+            }
 
+        }
+        if (splines.Count>0)
+        {
+            //Debug.Log("Current Pos:"+(splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location);
+            splineLocation = (splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location; //location tracked 2 parents up
+            //splineLocation += splines[current].transform.FindChild("Extruder").transform.TransformPoint(splineLocation);
+            /*
+            for(int i=0;i< splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes.Count-1;i++)
+            {
+                splines[current].transform.FindChild("Extruder").transform.TransformPoint(splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes[i].Position);
+            }*/
+            splineRotation = (splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).Rotation; //rotation tracked 1 parent up, camera being in same level but above
+            posObj.transform.position = splineLocation;
+            posObj.transform.rotation = splineRotation;
 
+            rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
+                splineRotation * (ConvertRotation(Input.gyro.attitude)), lowPassFilterFactor);
 
-        rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
-            splineRotation * (ConvertRotation(Input.gyro.attitude)), lowPassFilterFactor);
-        //Professor Baker's code
-#if UNITY_EDITOR
-        //MoveChar(Input.GetAxis(k_HORIZONTAL),Input.GetAxis(k_VERTICAL));
-        rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
-            splineRotation * Quaternion.Euler(0,0, Input.GetAxis(k_HORIZONTAL)*90), lowPassFilterFactor);
-#else
-         rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
-            splineRotation * Quaternion.Euler(0,0, Input.acceleration.x*90), lowPassFilterFactor);
-#endif
+                    //Professor Baker's code
+            #if UNITY_EDITOR
+                    //MoveChar(Input.GetAxis(k_HORIZONTAL),Input.GetAxis(k_VERTICAL));
+                    rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
+                        splineRotation * Quaternion.Euler(0,0, Input.GetAxis(k_HORIZONTAL)*90), lowPassFilterFactor);
+            #else
+                     rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
+                        splineRotation * Quaternion.Euler(0,0, Input.acceleration.x*90), lowPassFilterFactor);
+            #endif
 
-        count = (count + .01f) % 6;
+        }
+
+        count += .01f;
+        
+        
     }
 
     //Professor Baker's Code, modified for 3D and changes z
