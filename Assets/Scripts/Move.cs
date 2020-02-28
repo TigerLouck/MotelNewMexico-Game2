@@ -48,7 +48,6 @@ public class Move : MonoBehaviour
         AttachGyro();
     }
 
-    [System.Obsolete]
     protected void FixedUpdate()
     {
         splines = GameObject.Find("HalfpipeManager").GetComponent<SpineSpawnManager>().spawnedSplines;
@@ -67,7 +66,7 @@ public class Move : MonoBehaviour
         {
             //Debug.Log("Current Pos:"+(splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location);
             Vector3 splineLocationLocal = (splineScript.GetSample(count)).location; //location tracked 2 parents up
-            splineLocation = splines[current].transform.FindChild("Extruder").transform.TransformPoint(splineLocationLocal);
+            splineLocation = splines[current].transform.GetChild(0).TransformPoint(splineLocationLocal);
             /*
             for(int i=0;i< splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes.Count-1;i++)
             {
