@@ -46,7 +46,7 @@ public class SpineSpawnManager : MonoBehaviour
             GameObject temp = Instantiate (splinePrefabs[GetRandomSpine ()]);
             //temp.transform.parent = splineParent.transform;
             spawnedSplines.Add (temp);
-            Debug.Log("Here");
+            //Debug.Log("Here");
         }
         else
         {

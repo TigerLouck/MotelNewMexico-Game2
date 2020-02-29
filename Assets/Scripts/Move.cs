@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+	static Move staticAccess;
 	int current = 0;
 	float speed = 2;
 	float count = 0f;
@@ -42,6 +43,11 @@ public class Move : MonoBehaviour
 	#endregion
 
 	#region [Unity events]
+	private void Awake()
+	{
+		// Initialize the static access so everything has access to the player
+		staticAccess = this;
+	}
 
 	protected void Start()
 	{
