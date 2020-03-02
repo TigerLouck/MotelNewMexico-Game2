@@ -70,11 +70,10 @@ public class Move : MonoBehaviour
 		}
 		if (splines.Count > 0)
 		{
-			//
-
 			//Debug.Log("Current Pos:"+(splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location);
 			Vector3 splineLocationLocal = (splineScript.GetSample(count)).location; //location tracked 2 parents up
 			splineLocation = splines[current].transform.GetChild(0).TransformPoint(splineLocationLocal);
+
 			/*
             for(int i=0;i< splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes.Count-1;i++)
             {
