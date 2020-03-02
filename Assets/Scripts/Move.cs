@@ -20,7 +20,7 @@ public class Move : MonoBehaviour
 	const string k_HORIZONTAL = "Horizontal";
 	const string k_VERTICAL = "Vertical";
 
-	#region [Private fields]
+	#region [gyro fields]
 
 	private bool gyroEnabled = true;
 	private const float lowPassFilterFactor = 0.2f;
@@ -34,8 +34,6 @@ public class Move : MonoBehaviour
 	private Quaternion calibration = Quaternion.identity;
 	private Quaternion baseOrientation = Quaternion.Euler(90, 0, 0);
 	private Quaternion baseOrientationRotationFix = Quaternion.identity;
-
-
 
 	private Quaternion referanceRotation = Quaternion.identity;
 	private bool debug = true;
@@ -70,8 +68,6 @@ public class Move : MonoBehaviour
 		}
 		if (splines.Count > 0)
 		{
-			//
-
 			//Debug.Log("Current Pos:"+(splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location);
 			Vector3 splineLocationLocal = (splineScript.GetSample(count)).location; //location tracked 2 parents up
 			splineLocation = splines[current].transform.GetChild(0).TransformPoint(splineLocationLocal);
@@ -98,23 +94,7 @@ public class Move : MonoBehaviour
 		}
 
 		count += .01f;
-
-
 	}
-
-	//Professor Baker's Code, modified for 3D and changes z
-	void MoveChar(float x, float z)
-	{
-
-		Vector3 newPos = posObj.transform.localPosition;
-		newPos.x += x * speed;
-		newPos.z += z * speed;
-
-		posObj.transform.localPosition = newPos;
-
-
-	}
-
 
 	#endregion
 
