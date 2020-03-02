@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3162174088438476173
+--- !u!1 &7950391494551885641
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3162174088438476172}
-  - component: {fileID: 3162174088438476174}
-  - component: {fileID: 3162174088438476175}
+  - component: {fileID: 7950391494551885640}
+  - component: {fileID: 7950391494551885642}
+  - component: {fileID: 7950391494551885643}
   m_Layer: 0
   m_Name: Extruder
   m_TagString: Untagged
@@ -18,27 +18,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3162174088438476172
+--- !u!4 &7950391494551885640
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162174088438476173}
+  m_GameObject: {fileID: 7950391494551885641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3162174088475248662}
+  m_Father: {fileID: 7950391494599226066}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3162174088438476174
+--- !u!114 &7950391494551885642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162174088438476173}
+  m_GameObject: {fileID: 7950391494551885641}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a85c5879d519aa4ab2ebbf42591149a, type: 3}
@@ -50,28 +50,28 @@ MonoBehaviour:
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
-  - position: {x: 0, y: 0, z: 89}
-    direction: {x: 0, y: 0, z: 128.5}
+  - position: {x: 0, y: 0, z: 62}
+    direction: {x: 0, y: 0, z: 113}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
-  - position: {x: -75.5, y: 0, z: 190.5}
-    direction: {x: -75.5, y: 0, z: 235.5}
+  - position: {x: 113, y: -82, z: 221}
+    direction: {x: 113, y: -82, z: 300}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
-  - position: {x: 12.25, y: 0, z: 278.5}
-    direction: {x: 12.25, y: 0, z: 330.75}
+  - position: {x: 113, y: -82, z: 310}
+    direction: {x: 113, y: -82, z: 383}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
-  - position: {x: -72, y: 0, z: 393.75}
-    direction: {x: -72, y: 0, z: 451.25}
+  - position: {x: 388, y: -205, z: 576}
+    direction: {x: 388, y: -205, z: 704}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
-  - position: {x: -136, y: 0, z: 483.25}
-    direction: {x: -136, y: 0, z: 540.75}
+  - position: {x: 388, y: -205, z: 788}
+    direction: {x: 388, y: -205, z: 791}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
@@ -83,8 +83,8 @@ MonoBehaviour:
       scale: {x: 1, y: 1}
       roll: 0
     n2:
-      position: {x: 0, y: 0, z: 89}
-      direction: {x: 0, y: 0, z: 128.5}
+      position: {x: 0, y: 0, z: 62}
+      direction: {x: 0, y: 0, z: 113}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -92,14 +92,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - n1:
-      position: {x: 0, y: 0, z: 89}
-      direction: {x: 0, y: 0, z: 128.5}
+      position: {x: 0, y: 0, z: 62}
+      direction: {x: 0, y: 0, z: 113}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     n2:
-      position: {x: -75.5, y: 0, z: 190.5}
-      direction: {x: -75.5, y: 0, z: 235.5}
+      position: {x: 113, y: -82, z: 221}
+      direction: {x: 113, y: -82, z: 300}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -107,14 +107,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - n1:
-      position: {x: -75.5, y: 0, z: 190.5}
-      direction: {x: -75.5, y: 0, z: 235.5}
+      position: {x: 113, y: -82, z: 221}
+      direction: {x: 113, y: -82, z: 300}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     n2:
-      position: {x: 12.25, y: 0, z: 278.5}
-      direction: {x: 12.25, y: 0, z: 330.75}
+      position: {x: 113, y: -82, z: 310}
+      direction: {x: 113, y: -82, z: 383}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -122,14 +122,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - n1:
-      position: {x: 12.25, y: 0, z: 278.5}
-      direction: {x: 12.25, y: 0, z: 330.75}
+      position: {x: 113, y: -82, z: 310}
+      direction: {x: 113, y: -82, z: 383}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     n2:
-      position: {x: -72, y: 0, z: 393.75}
-      direction: {x: -72, y: 0, z: 451.25}
+      position: {x: 388, y: -205, z: 576}
+      direction: {x: 388, y: -205, z: 704}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -137,32 +137,32 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - n1:
-      position: {x: -72, y: 0, z: 393.75}
-      direction: {x: -72, y: 0, z: 451.25}
+      position: {x: 388, y: -205, z: 576}
+      direction: {x: 388, y: -205, z: 704}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     n2:
-      position: {x: -136, y: 0, z: 483.25}
-      direction: {x: -136, y: 0, z: 540.75}
+      position: {x: 388, y: -205, z: 788}
+      direction: {x: 388, y: -205, z: 791}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     Changed:
       m_PersistentCalls:
         m_Calls: []
-  Length: 620.1046
+  Length: 1001.1355
   isLoop: 0
   CurveChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3162174088438476175
+--- !u!114 &7950391494551885643
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162174088438476173}
+  m_GameObject: {fileID: 7950391494551885641}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d1eb05ecfaa05444b40d40a2ea2268f, type: 3}
@@ -170,42 +170,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shapeVertices:
   - point: {x: -7, y: 9}
-    normal: {x: 0, y: -1.6000004}
+    normal: {x: 0, y: 1}
     uCoord: 0
   - point: {x: -6.3999996, y: 6.9}
-    normal: {x: 0, y: -1.3000002}
+    normal: {x: 1, y: -1}
     uCoord: 0.33
   - point: {x: -5.1, y: 4.3}
-    normal: {x: 0, y: -1.3}
-    uCoord: 0
+    normal: {x: 1, y: -1}
+    uCoord: 0.33
   - point: {x: -3, y: 2.4}
-    normal: {x: 0, y: -1}
+    normal: {x: 1, y: -1}
     uCoord: 0.33
   - point: {x: 0, y: 1.6999998}
-    normal: {x: 0, y: -1}
-    uCoord: 0
-  - point: {x: 3.1000001, y: 2.1999998}
-    normal: {x: 0, y: -1}
+    normal: {x: 1, y: -1}
+    uCoord: 0.33
+  - point: {x: 3.6000001, y: 2.2999997}
+    normal: {x: 1, y: -1}
     uCoord: 0.33
   - point: {x: 5.7000003, y: 4.6}
-    normal: {x: 0, y: -1}
-    uCoord: 0
+    normal: {x: 1, y: -1}
+    uCoord: 0.33
   - point: {x: 6.7000003, y: 7}
-    normal: {x: 0, y: -1.5999999}
+    normal: {x: 1, y: -1}
     uCoord: 0.33
   - point: {x: 7.1, y: 9}
-    normal: {x: 0, y: -1.2999997}
-    uCoord: 0
+    normal: {x: 1, y: -1}
+    uCoord: 0.33
   - point: {x: 7, y: 0}
-    normal: {x: 0, y: -1}
-    uCoord: 0
+    normal: {x: 1, y: -1}
+    uCoord: 0.33
   - point: {x: -7, y: 0}
-    normal: {x: 0, y: -1}
-    uCoord: 0
+    normal: {x: -1, y: -1}
+    uCoord: 0.04
   material: {fileID: 2100000, guid: d5ffcdc202a52254b83bf619f8d87163, type: 2}
-  textureScale: 0.001
+  textureScale: 0.05
   sampleSpacing: 1
---- !u!1 &3162174088475248663
+--- !u!1 &7950391494599226067
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,26 +213,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3162174088475248662}
+  - component: {fileID: 7950391494599226066}
   m_Layer: 0
-  m_Name: Halfpipe_01
-  m_TagString: Halfpipe
+  m_Name: Halfpipe_04
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3162174088475248662
+--- !u!4 &7950391494599226066
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162174088475248663}
+  m_GameObject: {fileID: 7950391494599226067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3162174088438476172}
+  - {fileID: 7950391494551885640}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

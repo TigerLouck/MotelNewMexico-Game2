@@ -157,5 +157,5 @@ MonoBehaviour:
     normal: {x: 0.16776848, y: 0.29858306}
     uCoord: 0.1
   material: {fileID: 2100000, guid: d5ffcdc202a52254b83bf619f8d87163, type: 2}
-  textureScale: 0.16
+  textureScale: 0.016
   sampleSpacing: 0.1
