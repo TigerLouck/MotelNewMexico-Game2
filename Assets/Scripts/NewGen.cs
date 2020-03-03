@@ -15,19 +15,22 @@ public class NewGen : MonoBehaviour
     private Vector3 splineLocation, splineTan, splineUp;
     private Quaternion splineRotation;
 
+    public GameObject[] extruders;
+
     // Start is called before the first frame update
     void Start()
     {
         copiesPerShape = 5;
         numNodes = nodesScript.GetComponent<Spline>().nodes.Count;
         //spline = GameObject.Find("Extruder").GetComponent<Spline>(); //the spline
+        extruders = new GameObject[100];
+        extruders[0] = GameObject.Find("Extruder");
         GenerateObjects();
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     // Place Objects
@@ -38,14 +41,15 @@ public class NewGen : MonoBehaviour
         {
             //move along the spline
             CurveSample sample = spline.GetSample(count);
-            splineLocation = sample.location; //location tracked 2 parents up
+            Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
+            splineLocation = extruders[0].transform.TransformPoint(splineLocalLocation);
             splineRotation = sample.Rotation; //rotation tracked 1 parent up, camera being in same level but above
             splineTan = sample.tangent;
             splineUp = sample.up;
             Ring(splineLocation);
             //splineDir = spline.GetComponent<Spline>().GetSample(count).Direction;
             //Instantiate(item, splineLocation, splineRotation);
-            count += 1.0f;
+            count += .04f;
         }
     }
 
@@ -63,6 +67,7 @@ public class NewGen : MonoBehaviour
             //Vector3 direction = Vector3.ProjectOnPlane(new Vector2(Mathf.Cos(angle * i), Mathf.Sin(angle * i)).normalized, splineTan);
 
             Vector3 position = centerPosNode + (direction * radius);
+            position.y += 8;
             Instantiate(item, position, splineRotation);//Quaternion.Euler(splineTan));
         }
     }
