@@ -5,11 +5,13 @@ using UnityEngine;
 public class ObstacleSpinner : MonoBehaviour
 {
 	ParticleSystem pSystem;
+	public GameManager gameManager;
 
 	private void Start()
 	{
 		pSystem = transform.parent.GetChild(1).GetComponent<ParticleSystem>();
 		Debug.Assert(pSystem != null);
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 
 	void Update()
@@ -27,6 +29,7 @@ public class ObstacleSpinner : MonoBehaviour
 			splashParticles[i].position += ((transform.position - other.transform.position) * Random.Range(1f, 5) + Random.insideUnitSphere);
 			splashParticles[i].velocity = ((transform.position - other.transform.position) * 10 + Random.insideUnitSphere);
 		}
+		gameManager.lives--;
 		Debug.Log("splash");
 		pSystem.SetParticles(splashParticles);
 
