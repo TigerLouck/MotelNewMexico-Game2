@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 104068733}
   m_Layer: 0
-  m_Name: PositionTracker
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -837,7 +837,7 @@ PrefabInstance:
     - target: {fileID: 195372694897777611, guid: 32b02f02e2c8c3041be3903936429ac6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3103275686340951195, guid: 32b02f02e2c8c3041be3903936429ac6,
         type: 3}
