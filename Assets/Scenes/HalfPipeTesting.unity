@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 104068733}
   m_Layer: 0
-  m_Name: PositionTracker
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1044,6 +1044,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1387db8b72cbc440914c36a5f0d29c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  nodesScript: {fileID: 0}
+  item: {fileID: 3895242126050890891, guid: de23bc26820fb3b4fa41e79c02911dc8, type: 3}
+  obstacle: {fileID: 0}
+  extruders: []
   splinePrefabs:
   - {fileID: 3162174088475248663, guid: 8f4cf3330d0ae574d8734fd5d224058c, type: 3}
   - {fileID: 7671892536213983158, guid: bb263b7825b24dc44947b75ab5500a6a, type: 3}
@@ -1207,7 +1212,7 @@ PrefabInstance:
     - target: {fileID: 195372694897777611, guid: 32b02f02e2c8c3041be3903936429ac6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3103275686340951195, guid: 32b02f02e2c8c3041be3903936429ac6,
         type: 3}

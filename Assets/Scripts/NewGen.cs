@@ -22,7 +22,6 @@ public class NewGen : MonoBehaviour
     {
         copiesPerShape = 5;
         numNodes = nodesScript.GetComponent<Spline>().nodes.Count;
-        //spline = GameObject.Find("Extruder").GetComponent<Spline>(); //the spline
         extruders = new GameObject[100];
         extruders[0] = GameObject.Find("Extruder");
         GenerateObjects();
