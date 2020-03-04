@@ -151,7 +151,7 @@ public class SpineSpawnManager : MonoBehaviour
             Ring(splineLocation);
             //splineDir = spline.GetComponent<Spline>().GetSample(count).Direction;
             //Instantiate(item, splineLocation, splineRotation);
-            count += .04f;
+            count += .5f;
         }
     }
 
