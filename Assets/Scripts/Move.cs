@@ -9,7 +9,7 @@ public class Move : MonoBehaviour
 {
 	static Move staticAccess;
 	int current = 0;
-	float speed = 2;
+	public float speed = 2;
 	float count = 0f;
 	private List<GameObject> splines;
 	public GameObject posObj;
