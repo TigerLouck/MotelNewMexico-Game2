@@ -89,12 +89,12 @@ public class Move : MonoBehaviour
 				splineRotation * Quaternion.Euler(0, 0, Input.GetAxis(k_HORIZONTAL) * 90), lowPassFilterFactor);
 #else
             rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
-                splineRotation * (ConvertRotation(Input.gyro.attitude)), lowPassFilterFactor);
+                splineRotation * Quaternion.Euler(0,0, Input.acceleration.x*90), lowPassFilterFactor);
 #endif
 
-		}
+        }
 
-		count += .01f;
+        count += .01f;
 	}
 
 	#endregion
