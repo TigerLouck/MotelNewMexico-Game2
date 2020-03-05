@@ -8,12 +8,12 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     public void PlayGame()
     {
-       SceneManager.LoadScene("HalfPipeTesting");
+        SceneManager.LoadScene("HalfPipeTesting");
     }
 
     // Update is called once per frame

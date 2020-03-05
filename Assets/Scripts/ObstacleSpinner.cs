@@ -6,12 +6,14 @@ public class ObstacleSpinner : MonoBehaviour
 {
 	ParticleSystem pSystem;
 	public GameManager gameManager;
+	private AudioManager audioManager;
 
 	private void Start()
 	{
 		pSystem = transform.parent.GetChild(1).GetComponent<ParticleSystem>();
 		Debug.Assert(pSystem != null);
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 	}
 
 	void Update()
@@ -30,6 +32,7 @@ public class ObstacleSpinner : MonoBehaviour
 			splashParticles[i].velocity = ((transform.position - other.transform.position) * 10 + Random.insideUnitSphere);
 		}
 		gameManager.lives--;
+		audioManager.PlayObstacle();
 		Debug.Log("splash");
 		pSystem.SetParticles(splashParticles);
 
