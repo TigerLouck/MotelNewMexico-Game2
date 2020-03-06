@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObstacleSpinner : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class ObstacleSpinner : MonoBehaviour
 
 	void Update()
 	{
-		transform.rotation = Quaternion.Euler(0, 0, 2) * transform.rotation;
+		transform.localRotation = Quaternion.Euler(0, 0, 2) * transform.localRotation;
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -33,7 +34,6 @@ public class ObstacleSpinner : MonoBehaviour
 		}
 		gameManager.lives--;
 		audioManager.PlayObstacle();
-		Debug.Log("splash");
 		pSystem.SetParticles(splashParticles);
 		GameManager.staticManager.lives--;
 		GetComponent<SphereCollider>().enabled = false;//turn off the collider to avoid double hits
@@ -43,6 +43,12 @@ public class ObstacleSpinner : MonoBehaviour
 			//disconnect the player controller and camera
 			PlayerCamera = Move.staticAccess.posObj.GetComponentInChildren<Camera>();
 			PlayerCamera.transform.SetParent(null, true);
+			gameManager.scoreText.enabled = false;
+			gameManager.livesText.enabled = false;
+			gameManager.gameOverSplashText.transform.GetChild(1).GetComponent<Text>()
+				.text = "Final Score: " + gameManager.score.ToString("#.##");
+			gameManager.gameOverSplashText.SetActive(true);
+			//GameManager.staticManager.ParticleSystem.SetActive(true);
 			Move.staticAccess.enabled = false;
 			//standby for reload
 			StartCoroutine(DieAndRespawn());

@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text livesText;
     public GameObject SplashText;
+    public GameObject gameOverSplashText;
 
-    private float score;
+    public float score;
     public int lives;
 
     private Move moveScript;
@@ -18,7 +19,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
         staticManager = this;
         moveScript = Move.staticAccess;
         Time.timeScale = 0;
