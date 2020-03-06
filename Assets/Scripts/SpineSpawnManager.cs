@@ -15,7 +15,7 @@ public class SpineSpawnManager : MonoBehaviour
     public GameObject obstacle;
     private Vector3 splineLocation, splineTan, splineUp;
     private Quaternion splineRotation;
-    public GameObject[] extruders;
+    //public GameObject[] extruders;
 
 
     [SerializeField]
@@ -50,12 +50,12 @@ public class SpineSpawnManager : MonoBehaviour
         SpawnRandomSpline();
 
         copiesPerShape = 4;
-        numNodes = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>().nodes.Count;
-        spline = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>();
+        numNodes = spawnedSplines[spawnedSplines.Count - 1].transform.GetChild(0).gameObject.GetComponent<Spline>().nodes.Count;
+        spline = spawnedSplines[spawnedSplines.Count - 1].transform.GetChild(0).gameObject.GetComponent<Spline>();
         //numNodes = nodesScript.GetComponent<Spline>().nodes.Count;
         //spline = GameObject.Find("Extruder").GetComponent<Spline>(); //the spline
-        extruders = new GameObject[100];
-        extruders[0] = spawnedSplines[0].transform.GetChild(0).gameObject;
+        //extruders = new GameObject[100];
+        //extruders[0] = spawnedSplines[0].transform.GetChild(0).gameObject;
         //spline = spawnedSplines[0].transform.GetChild(0).gameObject;
         //extruders[0] = GameObject.Find("Extruder");
         currentTailIndex=0;
@@ -122,7 +122,8 @@ public class SpineSpawnManager : MonoBehaviour
             temp.transform.Rotate(newDir);
             spawnedSplines.Add(temp);
         }
-
+        spline = spawnedSplines[spawnedSplines.Count - 1].transform.GetChild(0).gameObject.GetComponent<Spline>();
+        GenerateObjects();
     }
 
     IEnumerator DeleteSpline()
@@ -173,7 +174,7 @@ public class SpineSpawnManager : MonoBehaviour
             //move along the spline
             CurveSample sample = spline.GetSample(count);
             Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
-            splineLocation = extruders[0].transform.TransformPoint(splineLocalLocation);
+            splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
             splineRotation = sample.Rotation; //rotation tracked 1 parent up, camera being in same level but above
             splineTan = sample.tangent;
             splineUp = sample.up;
