@@ -201,7 +201,8 @@ public class SpineSpawnManager : MonoBehaviour
 
             Vector3 position = centerPosNode + (direction * radius);
             position.y += 8;
-            Instantiate(item, position, splineRotation);//Quaternion.Euler(splineTan));
+            GameObject temp = Instantiate(item, position, splineRotation);//Quaternion.Euler(splineTan));
+            temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
     }
 }
