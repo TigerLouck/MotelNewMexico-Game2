@@ -40,7 +40,7 @@ public class SpineSpawnManager : MonoBehaviour
         spawnedSplines = new List<GameObject>();
         SpawnRandomSpline();
 
-        copiesPerShape = 5;
+        copiesPerShape = 1;
         //nodesScript = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>().nodes.Count;
         numNodes = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>().nodes.Count;
         spline = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>();
