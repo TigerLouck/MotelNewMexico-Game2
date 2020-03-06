@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - position: {x: 0, y: 0, z: 0}
-    direction: {x: 0, y: 0, z: 3}
+    direction: {x: 0, y: 0, z: 38.25}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
@@ -87,24 +87,29 @@ MonoBehaviour:
     scale: {x: 1, y: 1}
     roll: 0
   - position: {x: -81.5, y: 0, z: 162.75}
-    direction: {x: -81.5, y: 0, z: 247}
+    direction: {x: -81.5, y: 0, z: 216}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
   - position: {x: -179.25, y: 0, z: 263.5}
-    direction: {x: -179.25, y: 0, z: 326.25}
+    direction: {x: -179.25, y: 0, z: 301.25}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
   - position: {x: -179.25, y: 0, z: 347.25}
-    direction: {x: -179.25, y: 0, z: 371}
+    direction: {x: -179.25, y: 0, z: 383}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: -179.25, y: 0, z: 489.25}
+    direction: {x: -179.25, y: 0, z: 513}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
   curves:
   - n1:
       position: {x: 0, y: 0, z: 0}
-      direction: {x: 0, y: 0, z: 3}
+      direction: {x: 0, y: 0, z: 38.25}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -125,7 +130,7 @@ MonoBehaviour:
       roll: 0
     n2:
       position: {x: -81.5, y: 0, z: 162.75}
-      direction: {x: -81.5, y: 0, z: 247}
+      direction: {x: -81.5, y: 0, z: 216}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -134,13 +139,13 @@ MonoBehaviour:
         m_Calls: []
   - n1:
       position: {x: -81.5, y: 0, z: 162.75}
-      direction: {x: -81.5, y: 0, z: 247}
+      direction: {x: -81.5, y: 0, z: 216}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     n2:
       position: {x: -179.25, y: 0, z: 263.5}
-      direction: {x: -179.25, y: 0, z: 326.25}
+      direction: {x: -179.25, y: 0, z: 301.25}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -149,20 +154,35 @@ MonoBehaviour:
         m_Calls: []
   - n1:
       position: {x: -179.25, y: 0, z: 263.5}
-      direction: {x: -179.25, y: 0, z: 326.25}
+      direction: {x: -179.25, y: 0, z: 301.25}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     n2:
       position: {x: -179.25, y: 0, z: 347.25}
-      direction: {x: -179.25, y: 0, z: 371}
+      direction: {x: -179.25, y: 0, z: 383}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     Changed:
       m_PersistentCalls:
         m_Calls: []
-  Length: 456.10355
+  - n1:
+      position: {x: -179.25, y: 0, z: 347.25}
+      direction: {x: -179.25, y: 0, z: 383}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: -179.25, y: 0, z: 489.25}
+      direction: {x: -179.25, y: 0, z: 513}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  Length: 582.80475
   isLoop: 0
   CurveChanged:
     m_PersistentCalls:

@@ -19,7 +19,7 @@ public class ObstacleSpinner : MonoBehaviour
 
 	void Update()
 	{
-		transform.rotation = Quaternion.Euler(0, 0, 2) * transform.rotation;
+		transform.localRotation = Quaternion.Euler(0, 0, 2) * transform.localRotation;
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -66,6 +66,7 @@ public class ObstacleSpinner : MonoBehaviour
 				Quaternion.LookRotation(transform.position - PlayerCamera.transform.position, Vector3.up),
 				.05f
 			);
+			timeToRespawn -= Time.deltaTime;
 			yield return null;
 		}
 		//Reload

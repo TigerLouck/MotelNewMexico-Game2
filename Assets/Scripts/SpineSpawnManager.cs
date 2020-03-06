@@ -10,7 +10,7 @@ public class SpineSpawnManager : MonoBehaviour
     private int copiesPerShape;
     private float count = 0f;
     public Spline spline;
-    public GameObject nodesScript;
+    //public GameObject nodesScript;
     public GameObject item;
     public GameObject obstacle;
     private Vector3 splineLocation, splineTan, splineUp;
@@ -34,14 +34,22 @@ public class SpineSpawnManager : MonoBehaviour
 
     private float currentTime;
 
+
+    #region MoveScript Items
+    private Move moveScript;
+    // the index of the starting spline in the list. Keeps track of which object should be deleted
+    private int currentTailIndex;
+    // compare current spline index to the one from MOVE script
+    private int currentSplineCompare;
+    #endregion
+
     void Start()
     {
         currentTime = 0f;
         spawnedSplines = new List<GameObject>();
         SpawnRandomSpline();
 
-        copiesPerShape = 5;
-        //nodesScript = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>().nodes.Count;
+        copiesPerShape = 4;
         numNodes = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>().nodes.Count;
         spline = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>();
         //numNodes = nodesScript.GetComponent<Spline>().nodes.Count;
@@ -50,18 +58,32 @@ public class SpineSpawnManager : MonoBehaviour
         extruders[0] = spawnedSplines[0].transform.GetChild(0).gameObject;
         //spline = spawnedSplines[0].transform.GetChild(0).gameObject;
         //extruders[0] = GameObject.Find("Extruder");
+        currentTailIndex=0;
+        currentSplineCompare =0;
+        moveScript = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Move>();
         GenerateObjects();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void FixedUpdate()
     {
         UpdateTimer();
+        DeleteSplineTail();
+
+    }
+
+    private void DeleteSplineTail()
+    {
+        if(currentSplineCompare!=moveScript.current)
+        {
+            currentSplineCompare++;
+            StartCoroutine("DeleteSpline");
+        }
     }
 
     private void SpawnRandomSpline()
@@ -99,10 +121,17 @@ public class SpineSpawnManager : MonoBehaviour
             temp.transform.position = newPos;
             temp.transform.Rotate(newDir);
             spawnedSplines.Add(temp);
-
-
         }
 
+    }
+
+    IEnumerator DeleteSpline()
+    {
+        yield return new WaitForSeconds(10f);
+        GameObject.Destroy(spawnedSplines[currentTailIndex]);
+        spawnedSplines[currentTailIndex]=null;
+        currentTailIndex++;
+        Debug.Log("Delete Spline");
     }
 
     private void UpdateTimer()
@@ -139,7 +168,7 @@ public class SpineSpawnManager : MonoBehaviour
     private void GenerateObjects()
     {
         // Keep generating objects until the end is reached
-        while (count <= numNodes)
+        while (count <= spline.nodes.Count - 1)
         {
             //move along the spline
             CurveSample sample = spline.GetSample(count);
@@ -152,6 +181,7 @@ public class SpineSpawnManager : MonoBehaviour
             //splineDir = spline.GetComponent<Spline>().GetSample(count).Direction;
             //Instantiate(item, splineLocation, splineRotation);
             count += .5f;
+            //obstacle.transform.setparent(splineExtruder.transform, true)
         }
     }
 
@@ -160,17 +190,18 @@ public class SpineSpawnManager : MonoBehaviour
     /// </summary>
     void Ring(Vector3 centerPosNode)
     {
-        float angle = 360f / copiesPerShape;
+        float angle = 200f / copiesPerShape;
         float radius = 5.0f;
         for (int i = 0; i < copiesPerShape; i++)
         {
-            Vector3 direction = Quaternion.AngleAxis(i * angle, splineTan) * splineUp;
+            Vector3 direction = Quaternion.AngleAxis((i * angle)+Random.Range(80,120), splineTan) * splineUp;
             //Vector3 direction = Vector3.ProjectOnPlane(Random.insideUnitCircle.normalized, splineTan);
             //Vector3 direction = Vector3.ProjectOnPlane(new Vector2(Mathf.Cos(angle * i), Mathf.Sin(angle * i)).normalized, splineTan);
 
             Vector3 position = centerPosNode + (direction * radius);
             position.y += 8;
-            Instantiate(item, position, splineRotation);//Quaternion.Euler(splineTan));
+            GameObject temp = Instantiate(obstacle, position, splineRotation);//Quaternion.Euler(splineTan));
+            temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
     }
 }
