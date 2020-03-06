@@ -34,6 +34,15 @@ public class SpineSpawnManager : MonoBehaviour
 
     private float currentTime;
 
+
+    #region MoveScript Items
+    private Move moveScript;
+    // the index of the starting spline in the list. Keeps track of which object should be deleted
+    private int currentTailIndex;
+    // compare current spline index to the one from MOVE script
+    private int currentSplineCompare;
+    #endregion
+
     void Start()
     {
         currentTime = 0f;
@@ -50,18 +59,32 @@ public class SpineSpawnManager : MonoBehaviour
         extruders[0] = spawnedSplines[0].transform.GetChild(0).gameObject;
         //spline = spawnedSplines[0].transform.GetChild(0).gameObject;
         //extruders[0] = GameObject.Find("Extruder");
+        currentTailIndex=0;
+        currentSplineCompare =0;
+        moveScript = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Move>();
         GenerateObjects();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void FixedUpdate()
     {
         UpdateTimer();
+        DeleteSplineTail();
+
+    }
+
+    private void DeleteSplineTail()
+    {
+        if(currentSplineCompare!=moveScript.current)
+        {
+            currentSplineCompare++;
+            StartCoroutine("DeleteSpline");
+        }
     }
 
     private void SpawnRandomSpline()
@@ -99,10 +122,17 @@ public class SpineSpawnManager : MonoBehaviour
             temp.transform.position = newPos;
             temp.transform.Rotate(newDir);
             spawnedSplines.Add(temp);
-
-
         }
 
+    }
+
+    IEnumerator DeleteSpline()
+    {
+        yield return new WaitForSeconds(10f);
+        GameObject.Destroy(spawnedSplines[currentTailIndex]);
+        spawnedSplines[currentTailIndex]=null;
+        currentTailIndex++;
+        Debug.Log("Delete Spline");
     }
 
     private void UpdateTimer()
