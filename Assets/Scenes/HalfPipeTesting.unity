@@ -167,7 +167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &159060675
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1574,12 +1574,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1604561301 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 195372694897777611, guid: 32b02f02e2c8c3041be3903936429ac6,
-    type: 3}
-  m_PrefabInstance: {fileID: 5318612486095363506}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1669666348
 GameObject:
   m_ObjectHideFlags: 0
@@ -6631,7 +6625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spline: {fileID: 0}
-  nodesScript: {fileID: 0}
   item: {fileID: 3895242126050890891, guid: de23bc26820fb3b4fa41e79c02911dc8, type: 3}
   obstacle: {fileID: 195372694897777611, guid: 32b02f02e2c8c3041be3903936429ac6, type: 3}
   extruders: []
@@ -6875,7 +6868,7 @@ PrefabInstance:
     - target: {fileID: 195372694897777611, guid: 32b02f02e2c8c3041be3903936429ac6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1062053330737488373, guid: 32b02f02e2c8c3041be3903936429ac6,
         type: 3}
