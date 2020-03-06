@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     private float score;
     public int lives;
 
-    public GameObject obstacle;
-
     private Move moveScript;
 
     // Start is called before the first frame update
