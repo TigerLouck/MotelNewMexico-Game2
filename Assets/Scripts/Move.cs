@@ -7,10 +7,10 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-	static Move staticAccess;
+	public static Move staticAccess;
 	int current = 0;
 	public float speed = 2;
-	float count = 0f;
+	float count = 0.5f;
 	private List<GameObject> splines;
 	public GameObject posObj;
 	public GameObject rotObj;
@@ -59,14 +59,14 @@ public class Move : MonoBehaviour
 		//move along the spline
 		if (count >= splineScript.nodes.Count - 1)
 		{
-			if (current < splines.Count)
+			if (current < splines.Count - 1)
 			{
 				count = 0;
 				current++;
 			}
 
 		}
-		if (splines.Count > 0)
+		else
 		{
 			//Debug.Log("Current Pos:"+(splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location);
 			Vector3 splineLocationLocal = (splineScript.GetSample(count)).location; //location tracked 2 parents up
@@ -92,9 +92,9 @@ public class Move : MonoBehaviour
                 splineRotation * Quaternion.Euler(0,0, Input.acceleration.x*90), lowPassFilterFactor);
 #endif
 
-        }
+			count += .01f;
+		}
 
-        count += .01f;
 	}
 
 	#endregion
