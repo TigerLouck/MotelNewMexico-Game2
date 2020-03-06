@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - position: {x: 0, y: 0, z: 0}
-    direction: {x: 0, y: 0, z: 3}
+    direction: {x: 0, y: 0, z: 28.75}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   curves:
   - n1:
       position: {x: 0, y: 0, z: 0}
-      direction: {x: 0, y: 0, z: 3}
+      direction: {x: 0, y: 0, z: 28.75}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0

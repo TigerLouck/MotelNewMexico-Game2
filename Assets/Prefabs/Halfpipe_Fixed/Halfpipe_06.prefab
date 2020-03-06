@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - position: {x: 0, y: 0, z: 0}
-    direction: {x: 0, y: 0, z: 3}
+    direction: {x: 0, y: 0, z: 23.5}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
   - position: {x: 0, y: 0, z: 136.5}
-    direction: {x: 0, y: 0, z: 212}
+    direction: {x: 0, y: 0, z: 186}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
     scale: {x: 1, y: 1}
     roll: 0
   - position: {x: 136.5, y: -52.75, z: 373.25}
-    direction: {x: 136.5, y: -52.75, z: 407}
+    direction: {x: 136.5, y: -52.75, z: 434}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
@@ -93,13 +93,13 @@ MonoBehaviour:
   curves:
   - n1:
       position: {x: 0, y: 0, z: 0}
-      direction: {x: 0, y: 0, z: 3}
+      direction: {x: 0, y: 0, z: 23.5}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     n2:
       position: {x: 0, y: 0, z: 136.5}
-      direction: {x: 0, y: 0, z: 212}
+      direction: {x: 0, y: 0, z: 186}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
         m_Calls: []
   - n1:
       position: {x: 0, y: 0, z: 136.5}
-      direction: {x: 0, y: 0, z: 212}
+      direction: {x: 0, y: 0, z: 186}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
       roll: 0
     n2:
       position: {x: 136.5, y: -52.75, z: 373.25}
-      direction: {x: 136.5, y: -52.75, z: 407}
+      direction: {x: 136.5, y: -52.75, z: 434}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
         m_Calls: []
   - n1:
       position: {x: 136.5, y: -52.75, z: 373.25}
-      direction: {x: 136.5, y: -52.75, z: 407}
+      direction: {x: 136.5, y: -52.75, z: 434}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
     Changed:
       m_PersistentCalls:
         m_Calls: []
-  Length: 1200.5818
+  Length: 1199.2158
   isLoop: 0
   CurveChanged:
     m_PersistentCalls:
