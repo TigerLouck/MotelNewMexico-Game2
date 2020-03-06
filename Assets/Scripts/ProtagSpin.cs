@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProtagSpin : MonoBehaviour
 {
 	Vector3 vectorJerk;
-	Vector3 vectorIntertia;
+	Vector3 vectorIntertia = Vector3.forward;
 	Vector3 lastControllerJerk;
 	Move controller;
 	private void Start()
