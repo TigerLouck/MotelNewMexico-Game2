@@ -194,7 +194,7 @@ public class SpineSpawnManager : MonoBehaviour
         float radius = 5.0f;
         for (int i = 0; i < copiesPerShape; i++)
         {
-            Vector3 direction = Quaternion.AngleAxis((i * angle)+100, splineTan) * splineUp;
+            Vector3 direction = Quaternion.AngleAxis((i * angle)+Random.Range(80,120), splineTan) * splineUp;
             //Vector3 direction = Vector3.ProjectOnPlane(Random.insideUnitCircle.normalized, splineTan);
             //Vector3 direction = Vector3.ProjectOnPlane(new Vector2(Mathf.Cos(angle * i), Mathf.Sin(angle * i)).normalized, splineTan);
 

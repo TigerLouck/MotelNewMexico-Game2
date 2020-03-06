@@ -18,7 +18,7 @@ public class ObstacleSpinner : MonoBehaviour
 
 	void Update()
 	{
-		transform.rotation = Quaternion.Euler(0, 0, 2) * transform.rotation;
+		transform.localRotation = Quaternion.Euler(0, 0, 2) * transform.localRotation;
 	}
 
 	private void OnTriggerEnter(Collider other)
