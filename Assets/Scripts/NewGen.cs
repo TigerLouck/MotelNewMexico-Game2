@@ -20,7 +20,7 @@ public class NewGen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        copiesPerShape = 5;
+        copiesPerShape = 1;
         numNodes = nodesScript.GetComponent<Spline>().nodes.Count;
         //spline = GameObject.Find("Extruder").GetComponent<Spline>(); //the spline
         extruders = new GameObject[100];
@@ -58,7 +58,7 @@ public class NewGen : MonoBehaviour
     /// </summary>
     void Ring(Vector3 centerPosNode)
     {
-        float angle = 360f / copiesPerShape;
+        float angle = 90f / copiesPerShape;
         float radius = 5.0f;
         for (int i = 0; i < copiesPerShape; i++)
         {
