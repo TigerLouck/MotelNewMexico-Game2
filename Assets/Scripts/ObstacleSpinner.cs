@@ -57,7 +57,7 @@ public class ObstacleSpinner : MonoBehaviour
 
 	IEnumerator DieAndRespawn()
 	{
-		float timeToRespawn = 5;
+		float timeToRespawn = .1f;
 		while (timeToRespawn > 0)
 		{
 			//Look to the thing that just killed you
