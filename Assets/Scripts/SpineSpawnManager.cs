@@ -10,7 +10,7 @@ public class SpineSpawnManager : MonoBehaviour
     private int copiesPerShape;
     private float count = 0f;
     public Spline spline;
-    public GameObject nodesScript;
+    //public GameObject nodesScript;
     public GameObject item;
     public GameObject obstacle;
     private Vector3 splineLocation, splineTan, splineUp;
@@ -49,8 +49,7 @@ public class SpineSpawnManager : MonoBehaviour
         spawnedSplines = new List<GameObject>();
         SpawnRandomSpline();
 
-        copiesPerShape = 1;
-        //nodesScript = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>().nodes.Count;
+        copiesPerShape = 4;
         numNodes = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>().nodes.Count;
         spline = spawnedSplines[0].transform.GetChild(0).gameObject.GetComponent<Spline>();
         //numNodes = nodesScript.GetComponent<Spline>().nodes.Count;
@@ -191,17 +190,17 @@ public class SpineSpawnManager : MonoBehaviour
     /// </summary>
     void Ring(Vector3 centerPosNode)
     {
-        float angle = 360f / copiesPerShape;
+        float angle = 200f / copiesPerShape;
         float radius = 5.0f;
         for (int i = 0; i < copiesPerShape; i++)
         {
-            Vector3 direction = Quaternion.AngleAxis(i * angle, splineTan) * splineUp;
+            Vector3 direction = Quaternion.AngleAxis((i * angle)+100, splineTan) * splineUp;
             //Vector3 direction = Vector3.ProjectOnPlane(Random.insideUnitCircle.normalized, splineTan);
             //Vector3 direction = Vector3.ProjectOnPlane(new Vector2(Mathf.Cos(angle * i), Mathf.Sin(angle * i)).normalized, splineTan);
 
             Vector3 position = centerPosNode + (direction * radius);
             position.y += 8;
-            GameObject temp = Instantiate(item, position, splineRotation);//Quaternion.Euler(splineTan));
+            GameObject temp = Instantiate(obstacle, position, splineRotation);//Quaternion.Euler(splineTan));
             temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
     }
