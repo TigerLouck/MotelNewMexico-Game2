@@ -169,7 +169,7 @@ public class SpineSpawnManager : MonoBehaviour
     private void GenerateObjects()
     {
         // Keep generating objects until the end is reached
-        while (count <= numNodes)
+        while (count <= spline.nodes.Count - 1)
         {
             //move along the spline
             CurveSample sample = spline.GetSample(count);
