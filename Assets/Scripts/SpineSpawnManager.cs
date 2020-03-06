@@ -182,6 +182,7 @@ public class SpineSpawnManager : MonoBehaviour
             //splineDir = spline.GetComponent<Spline>().GetSample(count).Direction;
             //Instantiate(item, splineLocation, splineRotation);
             count += .5f;
+            //obstacle.transform.setparent(splineExtruder.transform, true)
         }
     }
 
