@@ -85,8 +85,8 @@ MonoBehaviour:
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
-  - position: {x: -502.25, y: 0, z: 313.75}
-    direction: {x: -502.25, y: 0, z: 416}
+  - position: {x: -502.25, y: 0, z: 296.75}
+    direction: {x: -502.25, y: 0, z: 399}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
@@ -203,15 +203,15 @@ MonoBehaviour:
       scale: {x: 1, y: 1}
       roll: 0
     n2:
-      position: {x: -502.25, y: 0, z: 313.75}
-      direction: {x: -502.25, y: 0, z: 416}
+      position: {x: -502.25, y: 0, z: 296.75}
+      direction: {x: -502.25, y: 0, z: 399}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     Changed:
       m_PersistentCalls:
         m_Calls: []
-  Length: 1215.0397
+  Length: 1202.4718
   isLoop: 0
   CurveChanged:
     m_PersistentCalls:

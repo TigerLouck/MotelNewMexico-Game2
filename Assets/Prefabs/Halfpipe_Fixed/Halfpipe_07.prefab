@@ -75,8 +75,8 @@ MonoBehaviour:
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
-  - position: {x: 193.25, y: 0, z: 469.55536}
-    direction: {x: 193.25, y: 0, z: 496.24048}
+  - position: {x: 193.25, y: 0, z: 507.30536}
+    direction: {x: 193.25, y: 0, z: 533.9905}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
@@ -163,15 +163,15 @@ MonoBehaviour:
       scale: {x: 1, y: 1}
       roll: 0
     n2:
-      position: {x: 193.25, y: 0, z: 469.55536}
-      direction: {x: 193.25, y: 0, z: 496.24048}
+      position: {x: 193.25, y: 0, z: 507.30536}
+      direction: {x: 193.25, y: 0, z: 533.9905}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     Changed:
       m_PersistentCalls:
         m_Calls: []
-  Length: 562.57446
+  Length: 600.32446
   isLoop: 0
   CurveChanged:
     m_PersistentCalls:
