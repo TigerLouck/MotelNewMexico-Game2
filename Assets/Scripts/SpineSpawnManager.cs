@@ -183,6 +183,7 @@ public class SpineSpawnManager : MonoBehaviour
             //Instantiate(item, splineLocation, splineRotation);
             count += .5f;
             //obstacle.transform.setparent(splineExtruder.transform, true)
+            copiesPerShape = 4;
         }
     }
 
