@@ -73,6 +73,7 @@ public class SpineSpawnManager : MonoBehaviour
 
     private void DeleteSplineTail()
     {
+        //Debug.Log("currentSplineCompare: " + currentSplineCompare);
         if (currentSplineCompare != moveScript.current)
         {
             currentSplineCompare++;
@@ -82,6 +83,7 @@ public class SpineSpawnManager : MonoBehaviour
 
     private void SpawnRandomSpline()
     {
+        
         if (spawnedSplines.Count <= 0)
         {
             // if not other splines to base position off of, start at origin
@@ -116,6 +118,7 @@ public class SpineSpawnManager : MonoBehaviour
             temp.transform.Rotate(newDir);
             spawnedSplines.Add(temp);
         }
+        Debug.Log("there are now " + spawnedSplines.Count + " splines spawned");
         spline = spawnedSplines[spawnedSplines.Count - 1].transform.GetChild(0).gameObject.GetComponent<Spline>();
         GenerateObjects();
     }
@@ -123,19 +126,23 @@ public class SpineSpawnManager : MonoBehaviour
     IEnumerator DeleteSpline()
     {
         yield return new WaitForSeconds(10f);
-        GameObject.Destroy(spawnedSplines[currentTailIndex]);
-        spawnedSplines[currentTailIndex] = null;
+        //GameObject.Destroy(spawnedSplines[currentTailIndex]);
+        //spawnedSplines[currentTailIndex] = null;
+        GameObject.Destroy(spawnedSplines[0]);
+        spawnedSplines.RemoveAt(0);
         currentTailIndex++;
         Debug.Log("Delete Spline");
     }
 
     private void UpdateTimer()
     {
+        //Debug.Log("currentTime: " + currentTime + " and spawnTimer is " + spawnTimer);
         currentTime += Time.fixedDeltaTime;
         if (currentTime >= spawnTimer)
         {
             SpawnRandomSpline();
             currentTime = 0f;
+            DeleteSplineTail();
         }
     }
 
@@ -166,65 +173,64 @@ public class SpineSpawnManager : MonoBehaviour
         float rngPlacement = Random.Range(0.0f, 1.0f);
         //float rngPlacement = 0.70f;
         bool left = true;
-
+        count = 0f;
+    
         // Keep generating objects until the end is reached
         while (count <= spline.nodes.Count - 1)
         {
             if (rngPlacement <= 0.33f) // Generate Rings
+        {
+            //move along the spline
+            CurveSample sample = spline.GetSample(count);
+            Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
+            splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
+            splineRotation = sample.Rotation; //rotation tracked 1 parent up, camera being in same level but above
+            splineTan = sample.tangent;
+            splineUp = sample.up;
+            if (count >= 1.0f) // So the player doesn't die at the start
             {
-                //move along the spline
-                CurveSample sample = spline.GetSample(count);
-                Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
-                splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
-                splineRotation = sample.Rotation; //rotation tracked 1 parent up, camera being in same level but above
-                splineTan = sample.tangent;
-                splineUp = sample.up;
-                if (count >= 1.0f) // So the player doesn't die at the start
-                {
-                    Ring(splineLocation);
-                }
-                //splineDir = spline.GetComponent<Spline>().GetSample(count).Direction;
-                //Instantiate(item, splineLocation, splineRotation);
-                count += .5f;
-                //obstacle.transform.setparent(splineExtruder.transform, true)
-                copiesPerShape = 4;
+                Ring(splineLocation);
             }
-            else if (rngPlacement <= 0.66f) // Generate Lines
+            //splineDir = spline.GetComponent<Spline>().GetSample(count).Direction;
+            //Instantiate(item, splineLocation, splineRotation);
+            count += .5f;
+            //obstacle.transform.setparent(splineExtruder.transform, true)
+            copiesPerShape = 4;
+        }
+        else if (rngPlacement <= 0.66f) // Generate Lines
+        {
+            //move along the spline
+            //count = 0.5f;
+            CurveSample sample = spline.GetSample(count);
+            Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
+            splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
+            splineRotation = sample.Rotation;
+            splineTan = sample.tangent;
+            splineUp = sample.up;
+            if ((count >= 2.0f && count <= 3.5f) || (count >= 4.5f && count <= 6.0f)) // So the player doesn't die at the start
             {
-                //move along the spline
-                //count = 0.5f;
-                CurveSample sample = spline.GetSample(count);
-                Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
-                splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
-                splineRotation = sample.Rotation;
-                splineTan = sample.tangent;
-                splineUp = sample.up;
-                if ((count >= 2.0f && count <= 3.5f) || (count >= 4.5f && count <= 6.0f)) // So the player doesn't die at the start
-                {
-                    Lines(splineLocation);
-                }
-                count += .08f;
-                copiesPerShape = 3;
+                Lines(splineLocation);
             }
-            else if (rngPlacement <= 1.0f) // Generate Rows
+            count += .08f;
+            copiesPerShape = 3;
+        }
+        else if (rngPlacement <= 1.0f) // Generate Rows
+        {
+            //move along the spline
+            CurveSample sample = spline.GetSample(count);
+            Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
+            splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
+            splineRotation = sample.Rotation;
+            splineTan = sample.tangent;
+            splineUp = sample.up;
+            if (count >= 1.0f) // So the player doesn't die at the start
             {
-                //move along the spline
-                CurveSample sample = spline.GetSample(count);
-                Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
-                splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
-                splineRotation = sample.Rotation;
-                splineTan = sample.tangent;
-                splineUp = sample.up;
-                if (count >= 1.0f) // So the player doesn't die at the start
-                {
-                    LeftAndRight(splineLocation, left);
-                    left = !left; // alternate left and right
-                }
-                count += .5f;
-                copiesPerShape = 5;
+                LeftAndRight(splineLocation, left);
+                left = !left; // alternate left and right
             }
-
-
+            count += .5f;
+            copiesPerShape = 5;
+        }
         }
     }
 
