@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.69437295, g: 0.259835, b: 0.6113045, a: 1}
+  m_IndirectSpecularColor: {r: 0.69435006, g: 0.2598424, b: 0.6113275, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1929,7 +1929,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 1
   autoRandomSeed: 1
@@ -6627,7 +6627,6 @@ MonoBehaviour:
   spline: {fileID: 0}
   item: {fileID: 3895242126050890891, guid: de23bc26820fb3b4fa41e79c02911dc8, type: 3}
   obstacle: {fileID: 195372694897777611, guid: 32b02f02e2c8c3041be3903936429ac6, type: 3}
-  extruders: []
   splinePrefabs:
   - {fileID: 3162174088475248663, guid: 8f4cf3330d0ae574d8734fd5d224058c, type: 3}
   - {fileID: 7671892536213983158, guid: bb263b7825b24dc44947b75ab5500a6a, type: 3}
