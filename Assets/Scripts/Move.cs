@@ -87,12 +87,14 @@ public class Move : MonoBehaviour
 			//MoveChar(Input.GetAxis(k_HORIZONTAL),Input.GetAxis(k_VERTICAL));
 			rotObj.transform.rotation = Quaternion.Slerp (transform.rotation,
 				splineRotation * Quaternion.Euler (0, 0, Input.GetAxis (k_HORIZONTAL) * 90), lowPassFilterFactor);
-            posObj.transform.position = new Vector3(posObj.transform.position.x,(posObj.transform.position.y+Mathf.Abs(Input.GetAxis(k_VERTICAL)*2)),posObj.transform.position.z);
-            
+            //posObj.transform.position = new Vector3(posObj.transform.position.x,(posObj.transform.position.y+Mathf.Abs(Input.GetAxis(k_VERTICAL)*2)),posObj.transform.position.z);
+            this.transform.localPosition = new Vector3(0, (Mathf.Abs(Input.GetAxis(k_VERTICAL)*2) - 6.5f), 0);
+
 #else
 			rotObj.transform.rotation = Quaternion.Slerp (transform.rotation,
 				splineRotation * Quaternion.Euler (0, 0, Input.acceleration.x * 90), lowPassFilterFactor);
-            posObj.transform.position = new Vector3(posObj.transform.position.x,(posObj.transform.position.y+Mathf.Abs(Input.acceleration.y*2)),posObj.transform.position.z);
+            //posObj.transform.position = new Vector3(posObj.transform.position.x,(posObj.transform.position.y+Mathf.Abs(Input.acceleration.y*2)),posObj.transform.position.z);
+            this.transform.localPosition= new Vector3(0,(Mathf.Abs(Input.acceleration.y*2)-6.5f),0);
 #endif
 
             count += .01f;
