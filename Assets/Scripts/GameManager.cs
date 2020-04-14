@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
         SplashText.SetActive(false);
 	}
 
+	public void Reload()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+	}
+
     // Update is called once per frame
     void Update()
     {

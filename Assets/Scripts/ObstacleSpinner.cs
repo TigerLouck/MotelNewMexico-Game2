@@ -61,8 +61,7 @@ public class ObstacleSpinner : MonoBehaviour
 
 	IEnumerator DieAndRespawn()
 	{
-		float timeToRespawn = .1f;
-		while (timeToRespawn > 0)
+		while (true)
 		{
 			//Look to the thing that just killed you
 			PlayerCamera.transform.rotation = Quaternion.Lerp(
@@ -73,8 +72,6 @@ public class ObstacleSpinner : MonoBehaviour
 			//timeToRespawn -= Time.deltaTime;
 			yield return null;
 		}
-		//Reload
-		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 
 	}
 }
