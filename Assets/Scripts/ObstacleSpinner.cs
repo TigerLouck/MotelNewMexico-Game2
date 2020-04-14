@@ -24,6 +24,10 @@ public class ObstacleSpinner : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.tag != "Player")
+		{
+			return;
+		}
 		ParticleSystem.Particle[] splashParticles = new ParticleSystem.Particle[pSystem.particleCount];
 		pSystem.GetParticles(splashParticles);
 		for (int i = 0; i < splashParticles.Length; i++)
@@ -66,7 +70,7 @@ public class ObstacleSpinner : MonoBehaviour
 				Quaternion.LookRotation(transform.position - PlayerCamera.transform.position, Vector3.up),
 				.05f
 			);
-			timeToRespawn -= Time.deltaTime;
+			//timeToRespawn -= Time.deltaTime;
 			yield return null;
 		}
 		//Reload

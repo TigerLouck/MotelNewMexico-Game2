@@ -25,7 +25,7 @@ public class ProtagSpin : MonoBehaviour
 		//RandomRolling
 		//Throwing math at the problem until it looks good
 		vectorJerk =  (vectorJerk + Random.onUnitSphere + Vector3.forward).normalized;
-		vectorIntertia = (Quaternion.LookRotation((deltaControllerJerk + Vector3.forward * 10).normalized, Vector3.up) * (vectorIntertia + vectorJerk * .001f) + Vector3.forward * .001f).normalized;
+		vectorIntertia = (Quaternion.LookRotation((deltaControllerJerk + Vector3.forward).normalized, Vector3.up) * (vectorIntertia + vectorJerk * .001f) + Vector3.forward * .001f).normalized;
 		transform.localRotation = 
 			Quaternion.LookRotation(vectorIntertia, Vector3.up) * 
 			transform.localRotation
