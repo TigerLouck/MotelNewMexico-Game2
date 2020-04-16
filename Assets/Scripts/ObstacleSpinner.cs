@@ -9,8 +9,8 @@ public class ObstacleSpinner : MonoBehaviour
 	public GameManager gameManager;
 	private AudioManager audioManager;
 	private Camera PlayerCamera = null;
-	private void Start()
-	{
+
+	private void Awake() {
 		pSystem = transform.parent.GetChild(1).GetComponent<ParticleSystem>();
 		Debug.Assert(pSystem != null);
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -24,7 +24,9 @@ public class ObstacleSpinner : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		ParticleSystem.Particle[] splashParticles = new ParticleSystem.Particle[pSystem.particleCount];
+		if(other.gameObject.layer == 9) return;
+		
+        ParticleSystem.Particle[] splashParticles = new ParticleSystem.Particle[pSystem.particleCount];
 		pSystem.GetParticles(splashParticles);
 		for (int i = 0; i < splashParticles.Length; i++)
 		{

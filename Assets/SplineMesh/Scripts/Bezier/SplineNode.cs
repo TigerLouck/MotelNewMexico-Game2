@@ -19,9 +19,9 @@ namespace SplineMesh {
             get { return position; }
             set {
                 if (position.Equals(value)) return;
-                position.x = value.x;
-                position.y = value.y;
-                position.z = value.z;
+                position.x = Mathf.Round(value.x);
+                position.y = Mathf.Round(value.y);
+                position.z = Mathf.Round(value.z);
                 if(Changed != null) Changed(this, EventArgs.Empty);
             }
         }
@@ -35,9 +35,9 @@ namespace SplineMesh {
             get { return direction; }
             set {
                 if (direction.Equals(value)) return;
-                direction.x = value.x;
-                direction.y = value.y;
-                direction.z = value.z;
+                direction.x = Mathf.Round(value.x);
+                direction.y = Mathf.Round(value.y);
+                direction.z = Mathf.Round(value.z);
                 if (Changed != null) Changed(this, EventArgs.Empty);
             }
         }
