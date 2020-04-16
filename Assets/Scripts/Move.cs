@@ -17,8 +17,12 @@ public class Move : MonoBehaviour
 	public SplineMesh.Spline splineScript;
 	Vector3 splineLocation;
 	Quaternion splineRotation;
+    bool isJumping = false;
+    bool isFalling = false;
+    float maxY;
 	const string k_HORIZONTAL = "Horizontal";
 	const string k_VERTICAL = "Vertical";
+    Vector3 localDefaultPos;
 
 	#region [gyro fields]
 
@@ -50,11 +54,12 @@ public class Move : MonoBehaviour
 	protected void Start ()
 	{
 		AttachGyro ();
-
+        localDefaultPos = this.transform.localPosition;
 	}
 
 	protected void FixedUpdate ()
 	{
+        Debug.Log(this.transform.localPosition);
 		splines = GameObject.Find ("HalfpipeManager").GetComponent<SpineSpawnManager> ().spawnedSplines;
 		splineScript = splines[current].GetComponentInChildren<SplineMesh.Spline> ();
 		//move along the spline
@@ -87,14 +92,70 @@ public class Move : MonoBehaviour
 			//MoveChar(Input.GetAxis(k_HORIZONTAL),Input.GetAxis(k_VERTICAL));
 			rotObj.transform.rotation = Quaternion.Slerp (transform.rotation,
 				splineRotation * Quaternion.Euler (0, 0, Input.GetAxis (k_HORIZONTAL) * 90), lowPassFilterFactor);
-            //posObj.transform.position = new Vector3(posObj.transform.position.x,(posObj.transform.position.y+Mathf.Abs(Input.GetAxis(k_VERTICAL)*2)),posObj.transform.position.z);
-            this.transform.localPosition = new Vector3(0, (Mathf.Abs(Input.GetAxis(k_VERTICAL)*2) - 6.5f), 0);
+            //jump code
+            if (Input.GetAxis(k_VERTICAL) > 0)
+            {
+                if (!isJumping&!isFalling)
+                {
+                    maxY = 1.0f;
+                    isJumping = true;
+                }
+                
+            }
+            if (isJumping&this.transform.localPosition.y>=maxY)
+            {
+                isFalling = true;
+                isJumping = false;
+            }
+            if (isJumping)
+            {
+                this.transform.localPosition += new Vector3(0, (maxY / 10), 0);
+            }
+            if (isFalling& this.transform.localPosition.y<=-6.5)
+            {
+                isFalling = false;
+                this.transform.localPosition = localDefaultPos;
+            }
+            if (isFalling)
+            {
+                this.transform.localPosition += new Vector3(0, -(maxY / 10), 0);
+            }
 
 #else
 			rotObj.transform.rotation = Quaternion.Slerp (transform.rotation,
 				splineRotation * Quaternion.Euler (0, 0, Input.acceleration.x * 90), lowPassFilterFactor);
             //posObj.transform.position = new Vector3(posObj.transform.position.x,(posObj.transform.position.y+Mathf.Abs(Input.acceleration.y*2)),posObj.transform.position.z);
-            this.transform.localPosition= new Vector3(0,(Mathf.Abs(Input.acceleration.y*2)-6.5f),0);
+            //this.transform.localPosition= new Vector3(0,(Mathf.Abs(Input.acceleration.y*2)-6.5f),0);
+
+            //jump code (replace acceleration.y with tap if need be)
+            if (Input.acceleration.y > 0)
+            {
+                if (!isJumping&!isFalling)
+                {
+                    maxY = 1.0f;
+                    isJumping = true;
+                }
+                
+            }
+            if (isJumping&this.transform.localPosition.y>=maxY)
+            {
+                isFalling = true;
+                isJumping = false;
+            }
+            if (isJumping)
+            {
+                this.transform.localPosition += new Vector3(0, (maxY / 10), 0);
+            }
+            if (isFalling& this.transform.localPosition.y<=-6.5)
+            {
+                isFalling = false;
+                this.transform.localPosition = localDefaultPos;
+            }
+            if (isFalling)
+            {
+                this.transform.localPosition += new Vector3(0, -(maxY / 10), 0);
+            }
+
 #endif
 
             count += .01f;
