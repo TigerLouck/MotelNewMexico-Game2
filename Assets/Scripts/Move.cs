@@ -128,7 +128,8 @@ public class Move : MonoBehaviour
             //this.transform.localPosition= new Vector3(0,(Mathf.Abs(Input.acceleration.y*2)-6.5f),0);
 
             //jump code (replace acceleration.y with tap if need be)
-            if (Input.acceleration.y > 0)
+            //if (Input.acceleration.y > 0)
+            if (Input.GetMouseButtonDown(0))
             {
                 if (!isJumping&!isFalling)
                 {
