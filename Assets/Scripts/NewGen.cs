@@ -16,10 +16,11 @@ public class NewGen : MonoBehaviour
     private Quaternion splineRotation;
 
     public GameObject[] extruders;
-
+    
     // Start is called before the first frame update
     void Start()
     {
+        
         copiesPerShape = 1;
         numNodes = nodesScript.GetComponent<Spline>().nodes.Count;
         //spline = GameObject.Find("Extruder").GetComponent<Spline>(); //the spline
