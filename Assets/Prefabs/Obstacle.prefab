@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  doesDamage: 1
 --- !u!135 &8366230656506596579
 SphereCollider:
   m_ObjectHideFlags: 0
