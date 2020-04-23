@@ -9,6 +9,8 @@ public class SpineSpawnManager : MonoBehaviour
     private int numNodes;
     private int copiesPerShape;
     private float count = 0f;
+    
+    [HideInInspector]
     public Spline spline;
     //public GameObject nodesScript;
     public GameObject item;
