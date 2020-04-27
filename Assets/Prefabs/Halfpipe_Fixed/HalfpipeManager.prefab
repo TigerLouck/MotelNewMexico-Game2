@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7108464786588869983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7108464786588869982}
+  - component: {fileID: 7108464786588869981}
+  m_Layer: 0
+  m_Name: HalfpipeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7108464786588869982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7108464786588869983}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 211.52454, y: 69.26783, z: 97.043365}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7108464786588869981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7108464786588869983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1387db8b72cbc440914c36a5f0d29c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  item: {fileID: 3895242126050890891, guid: de23bc26820fb3b4fa41e79c02911dc8, type: 3}
+  obstacle: {fileID: 195372694897777611, guid: 32b02f02e2c8c3041be3903936429ac6, type: 3}
+  splinePrefabs:
+  - {fileID: 3162174088475248663, guid: 8f4cf3330d0ae574d8734fd5d224058c, type: 3}
+  - {fileID: 7671892536213983158, guid: bb263b7825b24dc44947b75ab5500a6a, type: 3}
+  - {fileID: 6407020225777827129, guid: 797448fd75cf73f40a045bb8b0f01541, type: 3}
+  - {fileID: 2999468022578083177, guid: df392245722bd274c8f078996c677242, type: 3}
+  - {fileID: 728491786373101256, guid: d20b5515b16b45e4c96158b9cab834fc, type: 3}
+  - {fileID: 8505846118053645825, guid: 0419698a4040f15449d11171d665c977, type: 3}
+  - {fileID: 5118065344796366442, guid: 0d4a5aff19ce8f1429b62b0520a1fbbc, type: 3}
+  - {fileID: 7753703228835876869, guid: 07c62b6f0e7f7304d93bec3f8a793615, type: 3}
+  - {fileID: 5748547806968948693, guid: a2d5cc91ff6b29d41aa554a386dc2ad0, type: 3}
+  splineParent: {fileID: 0}
+  spawnTimer: 5
+  spawnedSplines: []

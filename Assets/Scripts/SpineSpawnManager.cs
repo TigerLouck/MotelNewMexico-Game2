@@ -9,6 +9,8 @@ public class SpineSpawnManager : MonoBehaviour
     private int numNodes;
     private int copiesPerShape;
     private float count = 0f;
+    
+    [HideInInspector]
     public Spline spline;
     //public GameObject nodesScript;
     public GameObject item;
@@ -87,6 +89,7 @@ public class SpineSpawnManager : MonoBehaviour
         {
             // if not other splines to base position off of, start at origin
             GameObject temp = Instantiate(splinePrefabs[GetRandomSpine()]);
+            temp.transform.parent = GameObject.FindGameObjectWithTag("SplineParent").transform;
             //temp.transform.parent = splineParent.transform;
             spawnedSplines.Add(temp);
         }
@@ -95,6 +98,7 @@ public class SpineSpawnManager : MonoBehaviour
             Vector3 lastPosition = GetEndPosition(spawnedSplines[spawnedSplines.Count - 1]);
             Vector3 lastDirection = GetEndDirection(spawnedSplines[spawnedSplines.Count - 1]);
             GameObject temp = Instantiate(splinePrefabs[GetRandomSpine()]);
+            temp.transform.parent = GameObject.FindGameObjectWithTag("SplineParent").transform;
 
 
 

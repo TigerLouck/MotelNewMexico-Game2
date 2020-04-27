@@ -9,8 +9,11 @@ public class ObstacleSpinner : MonoBehaviour
 	public GameManager gameManager;
 	private AudioManager audioManager;
 	private Camera PlayerCamera = null;
-	private void Start()
-	{
+
+	[SerializeField]
+    private bool doesDamage = true;
+
+    private void Awake() {
 		pSystem = transform.parent.GetChild(1).GetComponent<ParticleSystem>();
 		Debug.Assert(pSystem != null);
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -24,7 +27,7 @@ public class ObstacleSpinner : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.tag != "Player")
+		if (other.tag != "Player"||!doesDamage)
 		{
 			return;
 		}
@@ -36,6 +39,7 @@ public class ObstacleSpinner : MonoBehaviour
 			splashParticles[i].position += ((transform.position - other.transform.position) * Random.Range(1f, 5) + Random.insideUnitSphere);
 			splashParticles[i].velocity = ((transform.position - other.transform.position) * 10 + Random.insideUnitSphere);
 		}
+
 		gameManager.lives--;
 		audioManager.PlayObstacle();
 		pSystem.SetParticles(splashParticles);

@@ -72,7 +72,9 @@ namespace SplineMesh {
                         } else {
                             v.point = newVertexPoint;
                             // normal must be updated if point has been moved
-                            normal = se.transform.TransformPoint(q * (v.point + v.normal) + startSample.location);
+                            // round up to the nearest whole number
+                            Vector3 newNormal = se.transform.TransformPoint(q * (v.point + v.normal) + startSample.location);
+                            normal = new Vector3(Mathf.RoundToInt(newNormal.x), Mathf.RoundToInt(newNormal.y), Mathf.RoundToInt(newNormal.z));
                         }
                         se.SetToUpdate();
                     } else {
