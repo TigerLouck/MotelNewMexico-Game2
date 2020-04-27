@@ -97,28 +97,28 @@ public class Move : MonoBehaviour
             {
                 if (!isJumping&!isFalling)
                 {
-                    maxY = 1.0f;
+                    maxY = -1.0f;
                     isJumping = true;
                 }
                 
             }
-            if (isJumping&this.transform.localPosition.y>=maxY)
+            if (isJumping & transform.localPosition.y>=maxY)
             {
                 isFalling = true;
                 isJumping = false;
             }
             if (isJumping)
             {
-                this.transform.localPosition += new Vector3(0, (maxY / 10), 0);
+                transform.localPosition += new Vector3(0, (maxY / 10), 0);
             }
-            if (isFalling& this.transform.localPosition.y<=-6.5)
+            if (isFalling & transform.localPosition.y<=-6.5)
             {
                 isFalling = false;
-                this.transform.localPosition = localDefaultPos;
+                transform.localPosition = localDefaultPos;
             }
             if (isFalling)
             {
-                this.transform.localPosition += new Vector3(0, -(maxY / 10), 0);
+                transform.localPosition += new Vector3(0, -(maxY / 10), 0);
             }
 
 #else
