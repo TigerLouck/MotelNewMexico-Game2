@@ -89,6 +89,7 @@ public class Move : MonoBehaviour
 
 			//Professor Baker's code
 #if UNITY_EDITOR
+
 			//MoveChar(Input.GetAxis(k_HORIZONTAL),Input.GetAxis(k_VERTICAL));
 			rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
 				splineRotation * Quaternion.Euler(0, 0, Input.GetAxis(k_HORIZONTAL) * 90), lowPassFilterFactor);
@@ -96,6 +97,7 @@ public class Move : MonoBehaviour
 			if (Input.GetKeyDown(KeyCode.W) || Input.GetMouseButtonDown(0))
 			{
 #else
+
 			rotObj.transform.rotation = Quaternion.Slerp (transform.rotation,
 				splineRotation * Quaternion.Euler (0, 0, Input.acceleration.x * 90), lowPassFilterFactor);
             //posObj.transform.position = new Vector3(posObj.transform.position.x,(posObj.transform.position.y+Mathf.Abs(Input.acceleration.y*2)),posObj.transform.position.z);
