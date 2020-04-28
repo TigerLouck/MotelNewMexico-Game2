@@ -1,0 +1,318 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5285519262396224571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5285519262396224570}
+  m_Layer: 0
+  m_Name: Halfpipe_11
+  m_TagString: Halfpipe
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5285519262396224570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285519262396224571}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5285519262491767200}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5285519262491767201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5285519262491767200}
+  - component: {fileID: 5285519262491767202}
+  - component: {fileID: 5285519262491767203}
+  m_Layer: 0
+  m_Name: Extruder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5285519262491767200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285519262491767201}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5285519262396224570}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5285519262491767202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285519262491767201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a85c5879d519aa4ab2ebbf42591149a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes:
+  - position: {x: 0, y: 0, z: 0}
+    direction: {x: 0, y: 0, z: 40}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: 0, y: -54, z: 194}
+    direction: {x: 0, y: -54, z: 264}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: 0, y: 11, z: 371}
+    direction: {x: 0, y: 11, z: 456}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: 0, y: 11, z: 520}
+    direction: {x: 0, y: 11, z: 565}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: -56, y: -40, z: 614}
+    direction: {x: -99, y: -58, z: 611}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: -99, y: -79, z: 565}
+    direction: {x: -99, y: -86, z: 540}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: -41, y: -105, z: 530}
+    direction: {x: -16, y: -112, z: 538}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: 0, y: -166, z: 621}
+    direction: {x: 0, y: -173, z: 661}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: 0, y: -173, z: 759}
+    direction: {x: 0, y: -173, z: 799}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  - position: {x: 0, y: -173, z: 852}
+    direction: {x: 0, y: -173, z: 892}
+    up: {x: 0, y: 1, z: 0}
+    scale: {x: 1, y: 1}
+    roll: 0
+  curves:
+  - n1:
+      position: {x: 0, y: 0, z: 0}
+      direction: {x: 0, y: 0, z: 40}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: 0, y: -54, z: 194}
+      direction: {x: 0, y: -54, z: 264}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  - n1:
+      position: {x: 0, y: -54, z: 194}
+      direction: {x: 0, y: -54, z: 264}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: 0, y: 11, z: 371}
+      direction: {x: 0, y: 11, z: 456}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  - n1:
+      position: {x: 0, y: 11, z: 371}
+      direction: {x: 0, y: 11, z: 456}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: 0, y: 11, z: 520}
+      direction: {x: 0, y: 11, z: 565}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  - n1:
+      position: {x: 0, y: 11, z: 520}
+      direction: {x: 0, y: 11, z: 565}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: -56, y: -40, z: 614}
+      direction: {x: -99, y: -58, z: 611}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  - n1:
+      position: {x: -56, y: -40, z: 614}
+      direction: {x: -99, y: -58, z: 611}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: -99, y: -79, z: 565}
+      direction: {x: -99, y: -86, z: 540}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  - n1:
+      position: {x: -99, y: -79, z: 565}
+      direction: {x: -99, y: -86, z: 540}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: -41, y: -105, z: 530}
+      direction: {x: -16, y: -112, z: 538}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  - n1:
+      position: {x: -41, y: -105, z: 530}
+      direction: {x: -16, y: -112, z: 538}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: 0, y: -166, z: 621}
+      direction: {x: 0, y: -173, z: 661}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  - n1:
+      position: {x: 0, y: -166, z: 621}
+      direction: {x: 0, y: -173, z: 661}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: 0, y: -173, z: 759}
+      direction: {x: 0, y: -173, z: 799}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  - n1:
+      position: {x: 0, y: -173, z: 759}
+      direction: {x: 0, y: -173, z: 799}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    n2:
+      position: {x: 0, y: -173, z: 852}
+      direction: {x: 0, y: -173, z: 892}
+      up: {x: 0, y: 1, z: 0}
+      scale: {x: 1, y: 1}
+      roll: 0
+    Changed:
+      m_PersistentCalls:
+        m_Calls: []
+  Length: 1199.589
+  isLoop: 0
+  CurveChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5285519262491767203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285519262491767201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1eb05ecfaa05444b40d40a2ea2268f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapeVertices:
+  - point: {x: -7, y: 9}
+    normal: {x: 0, y: -1.6000004}
+    uCoord: 0
+  - point: {x: -6.3999996, y: 6.9}
+    normal: {x: 0, y: -1.3000002}
+    uCoord: 0.33
+  - point: {x: -5.1, y: 4.3}
+    normal: {x: 0, y: -1.3}
+    uCoord: 0
+  - point: {x: -3, y: 2.4}
+    normal: {x: 0, y: -1}
+    uCoord: 0.33
+  - point: {x: 0, y: 1.6999998}
+    normal: {x: 0, y: -1}
+    uCoord: 0
+  - point: {x: 3.1000001, y: 2.1999998}
+    normal: {x: 0, y: -1}
+    uCoord: 0.33
+  - point: {x: 5.7000003, y: 4.6}
+    normal: {x: 0, y: -1}
+    uCoord: 0
+  - point: {x: 6.7000003, y: 7}
+    normal: {x: 0, y: -1.5999999}
+    uCoord: 0.33
+  - point: {x: 7.1, y: 9}
+    normal: {x: 0, y: -1.2999997}
+    uCoord: 0
+  - point: {x: 7, y: 0}
+    normal: {x: 0, y: -1}
+    uCoord: 0
+  - point: {x: -7, y: 0}
+    normal: {x: 0, y: -1}
+    uCoord: 0
+  material: {fileID: 2100000, guid: d5ffcdc202a52254b83bf619f8d87163, type: 2}
+  textureScale: 0.001
+  sampleSpacing: 1

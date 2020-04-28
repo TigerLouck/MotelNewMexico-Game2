@@ -9,6 +9,8 @@ public class SpineSpawnManager : MonoBehaviour
     private int numNodes;
     private int copiesPerShape;
     private float count = 0f;
+    
+    [HideInInspector]
     public Spline spline;
     //public GameObject nodesScript;
     public GameObject item;
@@ -83,20 +85,20 @@ public class SpineSpawnManager : MonoBehaviour
 
     private void SpawnRandomSpline()
     {
-        
         if (spawnedSplines.Count <= 0)
         {
             // if not other splines to base position off of, start at origin
             GameObject temp = Instantiate(splinePrefabs[GetRandomSpine()]);
+            temp.transform.parent = GameObject.FindGameObjectWithTag("SplineParent").transform;
             //temp.transform.parent = splineParent.transform;
             spawnedSplines.Add(temp);
-            //Debug.Log("Here");
         }
         else
         {
             Vector3 lastPosition = GetEndPosition(spawnedSplines[spawnedSplines.Count - 1]);
             Vector3 lastDirection = GetEndDirection(spawnedSplines[spawnedSplines.Count - 1]);
             GameObject temp = Instantiate(splinePrefabs[GetRandomSpine()]);
+            temp.transform.parent = GameObject.FindGameObjectWithTag("SplineParent").transform;
 
 
 
@@ -171,66 +173,69 @@ public class SpineSpawnManager : MonoBehaviour
     {
         // Random number
         float rngPlacement = Random.Range(0.0f, 1.0f);
-        //float rngPlacement = 0.70f;
+        float rngLines = Random.Range(0.0f, 1.0f);
         bool left = true;
         count = 0f;
-    
+
         // Keep generating objects until the end is reached
         while (count <= spline.nodes.Count - 1)
         {
             if (rngPlacement <= 0.33f) // Generate Rings
-        {
-            //move along the spline
-            CurveSample sample = spline.GetSample(count);
-            Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
-            splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
-            splineRotation = sample.Rotation; //rotation tracked 1 parent up, camera being in same level but above
-            splineTan = sample.tangent;
-            splineUp = sample.up;
-            if (count >= 1.0f) // So the player doesn't die at the start
             {
-                Ring(splineLocation);
+                //move along the spline
+                CurveSample sample = spline.GetSample(count);
+                Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
+                splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
+                splineRotation = sample.Rotation; //rotation tracked 1 parent up, camera being in same level but above
+                splineTan = sample.tangent;
+                splineUp = sample.up;
+                if (count >= 1.0f) // So the player doesn't die at the start
+                {
+                    Ring(splineLocation);
+                    ItemRing(splineLocation);
+                }
+                //splineDir = spline.GetComponent<Spline>().GetSample(count).Direction;
+                //Instantiate(item, splineLocation, splineRotation);
+                count += .5f;
+                //obstacle.transform.setparent(splineExtruder.transform, true)
+                copiesPerShape = 4;
             }
-            //splineDir = spline.GetComponent<Spline>().GetSample(count).Direction;
-            //Instantiate(item, splineLocation, splineRotation);
-            count += .5f;
-            //obstacle.transform.setparent(splineExtruder.transform, true)
-            copiesPerShape = 4;
-        }
-        else if (rngPlacement <= 0.66f) // Generate Lines
-        {
-            //move along the spline
-            //count = 0.5f;
-            CurveSample sample = spline.GetSample(count);
-            Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
-            splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
-            splineRotation = sample.Rotation;
-            splineTan = sample.tangent;
-            splineUp = sample.up;
-            if ((count >= 2.0f && count <= 3.5f) || (count >= 4.5f && count <= 6.0f)) // So the player doesn't die at the start
+            else if (rngPlacement <= 0.66f) // Generate Lines
             {
-                Lines(splineLocation);
+                //move along the spline
+                //count = 0.5f;
+                CurveSample sample = spline.GetSample(count);
+                Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
+                splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
+                splineRotation = sample.Rotation;
+                splineTan = sample.tangent;
+                splineUp = sample.up;
+                if ((count >= 2.0f && count <= 3.5f) || (count >= 4.5f && count <= 6.0f)) // So the player doesn't die at the start
+                {
+                    Lines(splineLocation);
+                    ItemLines(splineLocation, rngLines);
+                }
+                count += .08f;
+                copiesPerShape = 3;
             }
-            count += .08f;
-            copiesPerShape = 3;
-        }
-        else if (rngPlacement <= 1.0f) // Generate Rows
-        {
-            //move along the spline
-            CurveSample sample = spline.GetSample(count);
-            Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
-            splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
-            splineRotation = sample.Rotation;
-            splineTan = sample.tangent;
-            splineUp = sample.up;
-            if (count >= 1.0f) // So the player doesn't die at the start
+            else if (rngPlacement <= 1.0f) // Generate Rows
             {
-                LeftAndRight(splineLocation, left);
-                left = !left; // alternate left and right
+                //move along the spline
+                CurveSample sample = spline.GetSample(count);
+                Vector3 splineLocalLocation = sample.location; //location tracked 2 parents up
+                splineLocation = spawnedSplines[spawnedSplines.Count - 1].transform.TransformPoint(splineLocalLocation);
+                splineRotation = sample.Rotation;
+                splineTan = sample.tangent;
+                splineUp = sample.up;
+                if (count >= 1.0f) // So the player doesn't die at the start
+                {
+                    ItemsLeftAndRight(splineLocalLocation, left);
+                    LeftAndRight(splineLocation, left);
+                    left = !left; // alternate left and right
+                }
+                count += .5f;
+                copiesPerShape = 5;
             }
-            count += .5f;
-            copiesPerShape = 5;
-        }
         }
     }
 
@@ -240,7 +245,7 @@ public class SpineSpawnManager : MonoBehaviour
     void Ring(Vector3 centerPosNode)
     {
         float angle = 200f / copiesPerShape;
-        float radius = 5.0f;
+        float radius = 6.0f;
         for (int i = 0; i < copiesPerShape; i++)
         {
             Vector3 direction = Quaternion.AngleAxis((i * angle) + Random.Range(80, 120), splineTan) * splineUp;
@@ -255,18 +260,66 @@ public class SpineSpawnManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Place items when its in ring mode
+    /// </summary>
+    /// <param name="centerPosNode"></param>
+    void ItemRing(Vector3 centerPosNode)
+    {
+        int itemCopies = 3;
+        float angle = 200f / itemCopies;
+        float radius = 4.0f;
+        for (int i = 0; i < itemCopies; i++)
+        {
+            Vector3 direction = Quaternion.AngleAxis((i * angle) + Random.Range(80, 120), splineTan) * splineUp;
+
+            Vector3 position = centerPosNode + (direction * radius);
+            position.y += 8;
+            GameObject temp = Instantiate(item, position, splineRotation);//Quaternion.Euler(splineTan));
+            temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
+        }
+    }
+
+    /// <summary>
     /// Place obstacles in rows
     /// </summary>
     void Lines(Vector3 centerPosNode)
     {
         float angle = 25f;
-        float radius = 5.0f;
+        float radius = 6.0f;
         for (int i = 0; i < copiesPerShape; i++)
         {
-            Vector3 direction = Quaternion.AngleAxis((3.5f * i * angle) + 90, splineTan) * splineUp;
+            Vector3 direction = Quaternion.AngleAxis((3.65f * i * angle) + 90, splineTan) * splineUp;
             Vector3 position = centerPosNode + (direction * radius);
             position.y += 8;
             GameObject temp = Instantiate(obstacle, position, splineRotation);
+            temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
+        }
+    }
+
+    /// <summary>
+    /// Place items when in lines mode
+    /// </summary>
+    /// <param name="centerPosNode"></param>
+    void ItemLines(Vector3 centerPosNode, float rngLines)
+    {
+        float angle = 25f;
+        float radius = 6.0f;
+        // Left side
+        if (rngLines <= 0.5)
+        {
+            Vector3 direction = Quaternion.AngleAxis(angle + 100, splineTan) * splineUp;
+            Vector3 position = centerPosNode + (direction * radius);
+            position.y += 8;
+            GameObject temp = Instantiate(item, position, splineRotation);
+            temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
+        }
+        // Right side
+        else if (rngLines <= 1.0f)
+        {
+            Vector3 direction = Quaternion.AngleAxis(angle + 200, splineTan) * splineUp;
+            Vector3 position = centerPosNode + (direction * radius);
+            position.y += 8;
+            GameObject temp = Instantiate(item, position, splineRotation);
             temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
     }
@@ -277,18 +330,18 @@ public class SpineSpawnManager : MonoBehaviour
     /// <param name="centerPosNode"></param>
     void LeftAndRight(Vector3 centerPosNode, bool left)
     {
-        float angle = 100f / copiesPerShape;
-        float radius = 5.0f;
+        float angle = 120f / copiesPerShape;
+        float radius = 6.0f;
         Vector3 direction;
         for (int i = 0; i < copiesPerShape; i++)
         {
             if (left)
             {
-                direction = Quaternion.AngleAxis((i * angle) + 190, splineTan) * splineUp;
+                direction = Quaternion.AngleAxis((i * angle) + 185, splineTan) * splineUp;
             }
             else
             {
-                direction = Quaternion.AngleAxis((i * angle) + 90, splineTan) * splineUp;
+                direction = Quaternion.AngleAxis((i * angle) + 80, splineTan) * splineUp;
             }
 
             Vector3 position = centerPosNode + (direction * radius);
@@ -296,5 +349,30 @@ public class SpineSpawnManager : MonoBehaviour
             GameObject temp = Instantiate(obstacle, position, splineRotation);//Quaternion.Euler(splineTan));
             temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
+    }
+
+    /// <summary>
+    /// Place items when in left and right mode
+    /// </summary>
+    /// <param name="centerPosNode"></param>
+    /// <param name=""></param>
+    void ItemsLeftAndRight(Vector3 centerPosNode, bool left)
+    {
+        float radius = 6.0f;
+        Vector3 direction;
+
+        if (left)
+        {
+            direction = Quaternion.AngleAxis(120, splineTan) * splineUp;
+        }
+        else
+        {
+            direction = Quaternion.AngleAxis(240, splineTan) * splineUp;
+        }
+
+        Vector3 position = centerPosNode + (direction * radius);
+        position.y += 8;
+        GameObject temp = Instantiate(item, position, splineRotation);
+        temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
     }
 }
