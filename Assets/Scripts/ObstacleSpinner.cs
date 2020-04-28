@@ -40,7 +40,6 @@ public class ObstacleSpinner : MonoBehaviour
 			splashParticles[i].velocity = ((transform.position - other.transform.position) * 10 + Random.insideUnitSphere);
 		}
 
-		gameManager.lives--;
 		audioManager.PlayObstacle();
 		pSystem.SetParticles(splashParticles);
 		GetComponent<SphereCollider>().enabled = false;//turn off the collider to avoid double hits
