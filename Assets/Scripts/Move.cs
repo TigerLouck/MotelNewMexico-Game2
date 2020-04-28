@@ -105,7 +105,7 @@ public class Move : MonoBehaviour
 
             //jump code (replace acceleration.y with tap if need be)
             //if (Input.acceleration.y > 0)
-            if (Input.touchCount > 0 || Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
 #endif
 
