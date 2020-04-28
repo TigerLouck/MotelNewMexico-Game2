@@ -36,27 +36,24 @@ public class ObstacleSpinner : MonoBehaviour
 			splashParticles[i].position += ((transform.position - other.transform.position) * Random.Range(1f, 5) + Random.insideUnitSphere);
 			splashParticles[i].velocity = ((transform.position - other.transform.position) * 10 + Random.insideUnitSphere);
 		}
-		gameManager.lives--;
 		audioManager.PlayObstacle();
 		pSystem.SetParticles(splashParticles);
-		GameManager.staticManager.lives--;
 		GetComponent<SphereCollider>().enabled = false;//turn off the collider to avoid double hits
 		Time.timeScale = 0;
-		if (GameManager.staticManager.lives < 0)
-		{
-			//disconnect the player controller and camera
-			PlayerCamera = Move.staticAccess.posObj.GetComponentInChildren<Camera>();
-			PlayerCamera.transform.SetParent(null, true);
-			gameManager.scoreText.enabled = false;
-			gameManager.livesText.enabled = false;
-			gameManager.gameOverSplashText.transform.GetChild(1).GetComponent<Text>()
-				.text = "Final Score: " + gameManager.score.ToString("#.##");
-			gameManager.gameOverSplashText.SetActive(true);
-			//GameManager.staticManager.ParticleSystem.SetActive(true);
-			Move.staticAccess.enabled = false;
-			//standby for reload
-			StartCoroutine(DieAndRespawn());
-		}
+
+		// game over code
+		//disconnect the player controller and camera
+		PlayerCamera = Move.staticAccess.posObj.GetComponentInChildren<Camera>();
+		PlayerCamera.transform.SetParent(null, true);
+		gameManager.scoreText.enabled = false;
+		gameManager.gemsText.enabled = false;
+		gameManager.gameOverSplashText.transform.GetChild(1).GetComponent<Text>()
+			.text = "Final Score: " + gameManager.score.ToString("#.##");
+		gameManager.gameOverSplashText.SetActive(true);
+		//GameManager.staticManager.ParticleSystem.SetActive(true);
+		Move.staticAccess.enabled = false;
+		//standby for reload
+		StartCoroutine(DieAndRespawn());
 	}
 
 	IEnumerator DieAndRespawn()

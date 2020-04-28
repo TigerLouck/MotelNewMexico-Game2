@@ -9,13 +9,13 @@ public class GameManager : MonoBehaviour
 
     public static GameManager staticManager;
     public Text scoreText;
-    public Text livesText;
+    public Text gemsText;
     public GameObject SplashText;
     public GameObject gameOverSplashText;
     public Canvas gameCanvas;
 
     public float score;
-    public int lives;
+    public int gems;
 
     private Move moveScript;
 
@@ -61,6 +61,6 @@ public class GameManager : MonoBehaviour
     {
         score += moveScript.speed * Time.deltaTime;
         scoreText.text = "Score: " + score.ToString("#.##");
-        livesText.text = "Lives: " + lives;
+        gemsText.text = "Gems: " + gems;
     }
 }
