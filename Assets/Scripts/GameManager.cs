@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
 	{
         SplashText.SetActive(true);
         gameOverSplashText.SetActive(false);
+        gems = 0;
+        score = 0;
+        scoreText.enabled = true;
+        gemsText.enabled = true;
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
