@@ -23,6 +23,7 @@ public class Move : MonoBehaviour
 	const string k_HORIZONTAL = "Horizontal";
 	const string k_VERTICAL = "Vertical";
 	Vector3 localDefaultPos;
+	GameObject pCamera;
 
 	#region [gyro fields]
 
@@ -49,6 +50,7 @@ public class Move : MonoBehaviour
 	{
 		// Initialize the static access so everything has access to the player
 		staticAccess = this;
+		pCamera = posObj.GetComponentInChildren<Camera>().transform.parent.gameObject;
 	}
 
 	protected void Start()
@@ -70,72 +72,78 @@ public class Move : MonoBehaviour
 				count = 0;
 				current++;
 			}
-
 		}
+		//Debug.Log("Current Pos:"+(splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location);
+		Vector3 splineLocationLocal = (splineScript.GetSample(count)).location; //location tracked 2 parents up
+		splineLocation = splines[current].transform.GetChild(0).TransformPoint(splineLocationLocal);
+
+		//Dynamic camera
+		Vector3 splineLocationCam = new Vector3();
+		if (count + .2f >= splineScript.nodes.Count - 1)
+			splineLocationCam = splines[current + 1].transform.GetChild(0).TransformPoint(splineScript.GetSample(count + .2f - splineScript.nodes.Count + 1).location);
 		else
-		{
-			//Debug.Log("Current Pos:"+(splines[current].GetComponentInChildren<SplineMesh.Spline>().GetSample(count)).location);
-			Vector3 splineLocationLocal = (splineScript.GetSample(count)).location; //location tracked 2 parents up
-			splineLocation = splines[current].transform.GetChild(0).TransformPoint(splineLocationLocal);
+			splineLocationCam = splines[current].transform.GetChild(0).TransformPoint(splineScript.GetSample(count + .2f).location);
+		
 
-			/*
-            for(int i=0;i< splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes.Count-1;i++)
-            {
-                splines[current].transform.FindChild("Extruder").transform.TransformPoint(splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes[i].Position);
-            }*/
-			splineRotation = (splineScript.GetSample(count)).Rotation; //rotation tracked 1 parent up, camera being in same level but above
-			posObj.transform.position = splineLocation;
-			posObj.transform.rotation = splineRotation;
+		pCamera.transform.rotation = Quaternion.LookRotation(splineLocationCam - pCamera.transform.position + new Vector3(0,5,0), posObj.transform.up);
+		/*
+        for(int i=0;i< splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes.Count-1;i++)
+        {
+            splines[current].transform.FindChild("Extruder").transform.TransformPoint(splines[current].GetComponentInChildren<SplineMesh.Spline>().nodes[i].Position);
+        }*/
+		splineRotation = (splineScript.GetSample(count)).Rotation; //rotation tracked 1 parent up, camera being in same level but above
+		posObj.transform.position = splineLocation;
+		posObj.transform.rotation = splineRotation;
 
-			//Professor Baker's code
+		//Professor Baker's code
 #if UNITY_EDITOR
 
-			//MoveChar(Input.GetAxis(k_HORIZONTAL),Input.GetAxis(k_VERTICAL));
-			rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
-				splineRotation * Quaternion.Euler(0, 0, Input.GetAxis(k_HORIZONTAL) * 90), lowPassFilterFactor);
-			//jump code
-			if (Input.GetKeyDown(KeyCode.W) || Input.GetMouseButtonDown(0))
-			{
+		//MoveChar(Input.GetAxis(k_HORIZONTAL),Input.GetAxis(k_VERTICAL));
+		rotObj.transform.rotation = Quaternion.Slerp(transform.rotation,
+			splineRotation * Quaternion.Euler(0, 0, Input.GetAxis(k_HORIZONTAL) * 90), lowPassFilterFactor);
+		//jump code
+		if (Input.GetKeyDown(KeyCode.W) || Input.GetMouseButtonDown(0))
+		{
 #else
 
-			rotObj.transform.rotation = Quaternion.Slerp (transform.rotation,
-				splineRotation * Quaternion.Euler (0, 0, Input.acceleration.x * 90), lowPassFilterFactor);
-            //posObj.transform.position = new Vector3(posObj.transform.position.x,(posObj.transform.position.y+Mathf.Abs(Input.acceleration.y*2)),posObj.transform.position.z);
-            //this.transform.localPosition= new Vector3(0,(Mathf.Abs(Input.acceleration.y*2)-6.5f),0);
+		rotObj.transform.rotation = Quaternion.Slerp (transform.rotation,
+			splineRotation * Quaternion.Euler (0, 0, Input.acceleration.x * 90), lowPassFilterFactor);
+        //posObj.transform.position = new Vector3(posObj.transform.position.x,(posObj.transform.position.y+Mathf.Abs(Input.acceleration.y*2)),posObj.transform.position.z);
+        //this.transform.localPosition= new Vector3(0,(Mathf.Abs(Input.acceleration.y*2)-6.5f),0);
 
-            //jump code (replace acceleration.y with tap if need be)
-            //if (Input.acceleration.y > 0)
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
+        //jump code (replace acceleration.y with tap if need be)
+        //if (Input.acceleration.y > 0)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
 #endif
 
-				if (!isJumping & !isFalling)
-				{
-					maxY = 4.0f;
-					isJumping = true;
-				}
+			if (!isJumping & !isFalling)
+			{
+				maxY = 4.0f;
+				isJumping = true;
+			}
 
-			}
-			if (isJumping & transform.localPosition.y + 6.5f >= maxY)
-			{
-				isFalling = true;
-				isJumping = false;
-			}
-			if (isJumping)
-			{
-				transform.localPosition += new Vector3(0, (maxY + 6.5f) / 20, 0);
-			}
-			if (isFalling & transform.localPosition.y <= -6.5)
-			{
-				isFalling = false;
-				transform.localPosition = localDefaultPos;
-			}
-			if (isFalling)
-			{
-				transform.localPosition += new Vector3(0, -((maxY + 6.5f) / 20), 0);
-			}
-			count += .01f;
 		}
+		if (isJumping & transform.localPosition.y + 6.5f >= maxY)
+		{
+			isFalling = true;
+			isJumping = false;
+		}
+		if (isJumping)
+		{
+			transform.localPosition += new Vector3(0, (maxY + 6.5f) / 20, 0);
+		}
+		if (isFalling & transform.localPosition.y <= -6.5)
+		{
+			isFalling = false;
+			transform.localPosition = localDefaultPos;
+		}
+		if (isFalling)
+		{
+			transform.localPosition += new Vector3(0, -((maxY + 6.5f) / 20), 0);
+		}
+		count += .01f;
+		
 
 	}
 
