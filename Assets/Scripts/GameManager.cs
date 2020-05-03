@@ -15,9 +15,6 @@ public class GameManager : MonoBehaviour
     public Canvas gameCanvas;
 
     public int gems;
-
-    public Move moveScript;
-
     private bool isPlaying;
 
     private void Awake()
@@ -38,7 +35,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveScript = Move.staticAccess;
         Time.timeScale = 0;
         gems = 0;
     }
@@ -68,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         if(isPlaying)
         {
-            distanceText.text = "Distance: " + moveScript.distance.ToString("#.##") + "m";
+            distanceText.text = "Distance: " + Move.staticAccess.distance.ToString("#.##") + "m";
             gemsText.text = "Gems: " + gems;
         }
         

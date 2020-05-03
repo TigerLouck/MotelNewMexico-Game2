@@ -66,7 +66,6 @@ public class Move : MonoBehaviour
 	protected void FixedUpdate()
 	{
 		distance += Vector3.Distance(this.transform.position, previousPosition) / 100f;
-		Debug.Log(distance);
 		previousPosition = this.transform.position;
 		splines = GameObject.Find("HalfpipeManager").GetComponent<SpineSpawnManager>().spawnedSplines;
 		splineScript = splines[current].GetComponentInChildren<SplineMesh.Spline>();
