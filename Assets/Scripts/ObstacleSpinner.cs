@@ -49,10 +49,14 @@ public class ObstacleSpinner : MonoBehaviour
 		//disconnect the player controller and camera
 		PlayerCamera = Move.staticAccess.posObj.GetComponentInChildren<Camera>();
 		PlayerCamera.transform.SetParent(null, true);
-		gameManager.scoreText.enabled = false;
-		gameManager.gemsText.enabled = false;
-		gameManager.gameOverSplashText.transform.GetChild(1).GetComponent<Text>()
-			.text = "Final Score: " + gameManager.score.ToString("#.##");
+		gameManager.distanceText.gameObject.SetActive(false);
+		gameManager.gemsText.gameObject.SetActive(false);
+		gameManager.gameOverSplashText.transform.GetChild(1).GetChild(0).GetComponent<Text>()
+			.text = "Distance Traveled: " + gameManager.moveScript.distance.ToString("#.##") + "m";
+		gameManager.gameOverSplashText.transform.GetChild(1).GetChild(1).GetComponent<Text>()
+			.text = "Gems Collected: " + gameManager.gems + " X 5 = " + (gameManager.gems *= 5);
+		gameManager.gameOverSplashText.transform.GetChild(1).GetChild(2).GetComponent<Text>()
+			.text = "Final Score: " + (gameManager.moveScript.distance + (float)gameManager.gems).ToString("#.##");
 		gameManager.gameOverSplashText.SetActive(true);
 		//GameManager.staticManager.ParticleSystem.SetActive(true);
 		Move.staticAccess.enabled = false;

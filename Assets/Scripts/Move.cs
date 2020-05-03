@@ -11,6 +11,8 @@ public class Move : MonoBehaviour
 	public int current = 0;
 	public float speed = 2;
 	float count = 0.5f;
+	public float distance;
+	private Vector3 previousPosition;
 	private List<GameObject> splines;
 	public GameObject posObj;
 	public GameObject rotObj;
@@ -57,11 +59,15 @@ public class Move : MonoBehaviour
 	{
 		AttachGyro();
 		localDefaultPos = this.transform.localPosition;
+		previousPosition = this.transform.position;
+		distance = 0;
 	}
 
 	protected void FixedUpdate()
 	{
-		//Debug.Log(this.transform.localPosition);
+		distance += Vector3.Distance(this.transform.position, previousPosition) / 100f;
+		Debug.Log(distance);
+		previousPosition = this.transform.position;
 		splines = GameObject.Find("HalfpipeManager").GetComponent<SpineSpawnManager>().spawnedSplines;
 		splineScript = splines[current].GetComponentInChildren<SplineMesh.Spline>();
 		//move along the spline

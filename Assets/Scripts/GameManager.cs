@@ -8,17 +8,17 @@ public class GameManager : MonoBehaviour
     public static GameObject singletonGameMaster;
 
     public static GameManager staticManager;
-    public Text scoreText;
+    public Text distanceText;
     public Text gemsText;
     public GameObject SplashText;
     public GameObject gameOverSplashText;
     public Canvas gameCanvas;
 
-    public float score;
     public int gems;
 
-    private Move moveScript;
+    public Move moveScript;
 
+    private bool isPlaying;
 
     private void Awake()
     {
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         moveScript = Move.staticAccess;
         Time.timeScale = 0;
+        gems = 0;
     }
 
 	public void StartPlay()
@@ -47,6 +48,9 @@ public class GameManager : MonoBehaviour
 		Time.timeScale = 1;
 		Move.staticAccess.transform.parent.parent.GetComponentInChildren<ParticleSystem>()?.gameObject.SetActive(false);
         SplashText.SetActive(false);
+        distanceText.gameObject.SetActive(true);
+        gemsText.gameObject.SetActive(true);   
+        isPlaying = true;
 	}
 
 	public void Reload()
@@ -54,17 +58,19 @@ public class GameManager : MonoBehaviour
         SplashText.SetActive(true);
         gameOverSplashText.SetActive(false);
         gems = 0;
-        score = 0;
-        scoreText.enabled = true;
-        gemsText.enabled = true;
+        isPlaying = false;
+        //moveScript.distance = 0f;
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
     // Update is called once per frame
     void Update()
     {
-        score += moveScript.speed * Time.deltaTime;
-        scoreText.text = "Score: " + score.ToString("#.##");
-        gemsText.text = "Gems: " + gems;
+        if(isPlaying)
+        {
+            distanceText.text = "Distance: " + moveScript.distance.ToString("#.##") + "m";
+            gemsText.text = "Gems: " + gems;
+        }
+        
     }
 }

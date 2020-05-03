@@ -30,8 +30,24 @@ public class AudioManager : MonoBehaviour
         obstacleSound.Play();
     }
 
-    public void PlayCollectible()
+    public void PlayCollectible(bool shouldJingle)
     {
+        if(shouldJingle)
+        {
+            float pitchChangeRNG = Random.Range(0.0f, 1.0f);
+            if (pitchChangeRNG < .5f)
+            {
+                collectibleSound.pitch -= .01f;
+            }
+            else
+            {
+                collectibleSound.pitch += .01f;
+            }
+        }
+        else
+        {
+            collectibleSound.pitch = 1.0f;
+        }
         collectibleSound.Play();
     }
 
