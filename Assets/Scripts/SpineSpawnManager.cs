@@ -253,7 +253,7 @@ public class SpineSpawnManager : MonoBehaviour
             //Vector3 direction = Vector3.ProjectOnPlane(new Vector2(Mathf.Cos(angle * i), Mathf.Sin(angle * i)).normalized, splineTan);
 
             Vector3 position = centerPosNode + (direction * radius);
-            position.y += 8;
+            position += splineUp * 9;
             GameObject temp = Instantiate(obstacle, position, splineRotation);//Quaternion.Euler(splineTan));
             temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
@@ -273,7 +273,7 @@ public class SpineSpawnManager : MonoBehaviour
             Vector3 direction = Quaternion.AngleAxis((i * angle) + Random.Range(80, 120), splineTan) * splineUp;
 
             Vector3 position = centerPosNode + (direction * radius);
-            position.y += 8;
+            position += splineUp * 9;
             GameObject temp = Instantiate(item, position, splineRotation);//Quaternion.Euler(splineTan));
             temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
@@ -290,7 +290,7 @@ public class SpineSpawnManager : MonoBehaviour
         {
             Vector3 direction = Quaternion.AngleAxis((3.65f * i * angle) + 90, splineTan) * splineUp;
             Vector3 position = centerPosNode + (direction * radius);
-            position.y += 8;
+            position += splineUp * 9;
             GameObject temp = Instantiate(obstacle, position, splineRotation);
             temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
@@ -309,7 +309,7 @@ public class SpineSpawnManager : MonoBehaviour
         {
             Vector3 direction = Quaternion.AngleAxis(angle + 100, splineTan) * splineUp;
             Vector3 position = centerPosNode + (direction * radius);
-            position.y += 8;
+            position += splineUp * 9;
             GameObject temp = Instantiate(item, position, splineRotation);
             temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
@@ -318,7 +318,7 @@ public class SpineSpawnManager : MonoBehaviour
         {
             Vector3 direction = Quaternion.AngleAxis(angle + 200, splineTan) * splineUp;
             Vector3 position = centerPosNode + (direction * radius);
-            position.y += 8;
+            position += splineUp * 9;
             GameObject temp = Instantiate(item, position, splineRotation);
             temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
@@ -345,7 +345,7 @@ public class SpineSpawnManager : MonoBehaviour
             }
 
             Vector3 position = centerPosNode + (direction * radius);
-            position.y += 8;
+            position += splineUp * 9;
             GameObject temp = Instantiate(obstacle, position, splineRotation);//Quaternion.Euler(splineTan));
             temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
         }
@@ -371,7 +371,7 @@ public class SpineSpawnManager : MonoBehaviour
         }
 
         Vector3 position = centerPosNode + (direction * radius);
-        position.y += 8;
+        position += splineUp * 9;
         GameObject temp = Instantiate(item, position, splineRotation);
         temp.transform.SetParent(spawnedSplines[spawnedSplines.Count - 1].transform, true);
     }
