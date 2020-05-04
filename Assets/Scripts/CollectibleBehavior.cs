@@ -20,12 +20,11 @@ public class CollectibleBehavior : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(gameManager.timeLastCollected);
         if (other.tag != "Player")
         {
             return;
         }
-
+        Debug.Log(gameManager.timeLastCollected);
         gameManager.gems++;
         // if it's been less than .3 seconds since you last collected a gem
         // make the sound jingle

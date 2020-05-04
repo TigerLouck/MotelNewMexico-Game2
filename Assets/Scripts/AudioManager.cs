@@ -38,24 +38,26 @@ public class AudioManager : MonoBehaviour
     public void PlayCollectible(bool shouldJingle)
     {
         // Algorithm #1: using RNG to decide to change the pitch up or down
-        /*
+        
         if(shouldJingle)
         {   
-            float changePitchRNG = UnityEngine.Random.Range(0.0f, 1.0f);
-            if(changePitchRNG < .5f)
+            float changePitchRNG = UnityEngine.Random.Range(0.9f, 1.1f);
+            collectibleSound.pitch = changePitchRNG;
+            /*
+            if (changePitchRNG < .5f)
             {
                 collectibleSound.pitch -= .03f;
             }
             else
             {
                 collectibleSound.pitch += .03f;
-            }
-            Mathf.Clamp(collectibleSound.pitch, 0.5f, 2f);
+            }*/
+            //Mathf.Clamp(collectibleSound.pitch, 0.5f, 2f);
         }
         else
         {
             collectibleSound.pitch = 1.0f;
-        }*/
+        }
 
         // Algorithm #2: using the audio mixer
         /*
