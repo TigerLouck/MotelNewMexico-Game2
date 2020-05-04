@@ -220,7 +220,7 @@ public class SpineSpawnManager : MonoBehaviour
                 count += .08f;
                 copiesPerShape = 3;
             }
-            else if (rngPlacement <= 1.0f && !(firstN <= 1.0f)) // Generate Rows
+            else if (rngPlacement > .66f && !(firstN > .66f)) // Generate Rows
             {
                 //move along the spline
                 CurveSample sample = spline.GetSample(count);
