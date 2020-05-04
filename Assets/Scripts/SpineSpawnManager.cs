@@ -238,6 +238,10 @@ public class SpineSpawnManager : MonoBehaviour
                 count += .5f;
                 copiesPerShape = 5;
             }
+            else
+            {
+                rngPlacement = Random.Range(0.0f, 1.0f);
+            }
         }
 
         return rngPlacement;
