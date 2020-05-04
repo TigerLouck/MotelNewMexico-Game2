@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     public int gems;
     private bool isPlaying;
 
+    // not the cleanest way to keep track of the last time you picked up a gem
+    // but it works; this variable is used in CollectibleBehavior.cs
+    public float timeLastCollected;
+
     private void Awake()
     {
         //Enforce singleton pattern on load
@@ -37,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         gems = 0;
+        timeLastCollected = 0.0f;
     }
 
 	public void StartPlay()
@@ -54,6 +59,7 @@ public class GameManager : MonoBehaviour
         SplashText.SetActive(true);
         gameOverSplashText.SetActive(false);
         gems = 0;
+        timeLastCollected = 0.0f;
         isPlaying = false;
         //moveScript.distance = 0f;
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
@@ -66,6 +72,7 @@ public class GameManager : MonoBehaviour
         {
             distanceText.text = "Distance: " + Move.staticAccess.distance.ToString("#.##") + "m";
             gemsText.text = "Gems: " + gems;
+            timeLastCollected += Time.deltaTime;
         }
         
     }
