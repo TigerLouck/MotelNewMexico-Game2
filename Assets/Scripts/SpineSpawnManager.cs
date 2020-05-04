@@ -180,7 +180,7 @@ public class SpineSpawnManager : MonoBehaviour
         // Keep generating objects until the end is reached
         while (count <= spline.nodes.Count - 1)
         {
-            if (rngPlacement <= 0.33f) // Generate Rings
+            if (rngPlacement < 0.33f) // Generate Rings
             {
                 //move along the spline
                 CurveSample sample = spline.GetSample(count);
@@ -200,7 +200,7 @@ public class SpineSpawnManager : MonoBehaviour
                 //obstacle.transform.setparent(splineExtruder.transform, true)
                 copiesPerShape = 4;
             }
-            else if (rngPlacement <= 0.66f) // Generate Lines
+            else if (rngPlacement < 0.66f) // Generate Lines
             {
                 //move along the spline
                 //count = 0.5f;
@@ -305,7 +305,7 @@ public class SpineSpawnManager : MonoBehaviour
         float angle = 25f;
         float radius = 6.0f;
         // Left side
-        if (rngLines <= 0.5)
+        if (rngLines < 0.5)
         {
             Vector3 direction = Quaternion.AngleAxis(angle + 100, splineTan) * splineUp;
             Vector3 position = centerPosNode + (direction * radius);
@@ -337,7 +337,7 @@ public class SpineSpawnManager : MonoBehaviour
         {
             if (left)
             {
-                direction = Quaternion.AngleAxis((i * angle) + 185, splineTan) * splineUp;
+                direction = Quaternion.AngleAxis((i * angle) + 170, splineTan) * splineUp;
             }
             else
             {
